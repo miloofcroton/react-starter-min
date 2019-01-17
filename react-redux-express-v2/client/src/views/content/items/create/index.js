@@ -58,7 +58,7 @@ export class ItemCreate extends PureComponent {
   }
 }
 
-import { postItem } from '../../../data/store/resources/items/actions';
+import { postItem } from '../../../../data/store/resources/items/actions';
 
 const mapStateToProps = state => ({
 

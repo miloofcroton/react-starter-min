@@ -6,7 +6,7 @@ const request = (url, method, body) => {
     },
     body: JSON.stringify(body)
   })
-    .then(res => [res.ok, res.headers, res.json()])
+    .then(res => [res.ok, res.json()])
     .then(([ok, json]) => {
       if (!ok) throw new Error('Failed request');
       return json;

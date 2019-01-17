@@ -1,6 +1,6 @@
 import React from 'react';
-import Create from './Create';
-import List from './List';
+import Create from './create';
+import List from './display';
 import styled from 'styled-components';
 
 const ItemsSection = styled.section`
@@ -11,6 +11,7 @@ const Items = () => {
   return (
     <ItemsSection>
       <Create/>
+      <List/>
     </ItemsSection>
   );
 };

@@ -13,7 +13,7 @@ export const fetchItems = () => ({
 export const FETCH_ITEM = 'FETCH_ITEM';
 export const FETCH_ITEM_LOADING = 'FETCH_ITEM_START';
 export const FETCH_ITEM_DONE = 'FETCH_ITEM_DONE';
-export const fetchITEM = id => ({
+export const fetchItem = id => ({
   type: FETCH_ITEM,
   loadStart: FETCH_ITEM_LOADING,
   loadEnd: FETCH_ITEM_DONE,
