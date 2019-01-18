@@ -100,5 +100,4 @@ Optionally, you can install `Material Icon Theme` and add the following to your 
 
 ## Issues
 
-* You may have to install the Chrome Redux and React extensions for the dev server to work on the front end. This can also be curtailed simply by removing that middleware from the Redux store. This should be fixed so that the middleware will be skipped if you don't have it.
 * add notes for proper deployment and CI
