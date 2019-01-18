@@ -2,7 +2,7 @@
 
 import app from './app';
 import { config } from 'dotenv';
-import { connect } from './lib/db/connection';
+import { connect } from './services/mongo/connection';
 config();
 connect();
 
