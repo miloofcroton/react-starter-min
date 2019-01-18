@@ -11,16 +11,6 @@
     "build": "webpack --mode production",
     "start:watch": "webpack-dev-server --hot --mode development"
   },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupTestFrameworkScriptFile": "<rootDir>src/testing/configs/setupTests.js",
-    "moduleNameMapper": {
-      "\\.(css)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/testing/configs/fileMock.js"
-    }
-  },
   "devDependencies": {
     "@babel/core": "^7.1.5",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
