@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { ROUTES } from './constants';
+import { ROUTES } from '../routes';
 
 const defaultRoute = () => {
   return Object

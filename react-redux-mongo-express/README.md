@@ -60,7 +60,8 @@ More details coming soon. The following is a prior process with Heroku:
   * a file at /client/src/data/services/`<resource name>`
   * a folder in /client/src/data/store/resources with `actions`, `reducers`, and `selectors` files
   * a folder at /client/src/views/content/`<resource name>` with any necessary view components inside
-  * update `ROUTES` in /client/views/routes/constants.js with any new routes
+  * update `ROUTES` in /client/views/routes.js with any new routes
+    * note: nav, order, and true are optional and add a link to the default header
   * `OPTIONAL:` a file in /client/src/testing/fixtures with useful data/functions for writing tests
 
 ##### Notes

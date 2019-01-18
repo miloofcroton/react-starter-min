@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 import { BrowserRouter, Switch } from 'react-router-dom';
-import Switches from './routes/Switches';
+import Switches from './layout/Switches';
 
 import { ThemeProvider } from 'styled-components';
 import { theme, GlobalStyle } from './layout/constants';

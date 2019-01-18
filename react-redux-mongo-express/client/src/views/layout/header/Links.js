@@ -1,5 +1,5 @@
 import React from 'react';
-import { ROUTES } from '../../routes/constants';
+import { ROUTES } from '../../routes';
 import { StyledLink } from '../../styles/Links';
 
 export const AllLinks = () => {
