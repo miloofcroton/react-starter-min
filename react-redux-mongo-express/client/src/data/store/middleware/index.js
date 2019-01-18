@@ -1,5 +1,4 @@
 import { applyMiddleware, compose } from 'redux';
-
 import { promiseRunner } from './promise';
 import chromeExtension from './chromeExtension';
 
@@ -9,8 +8,9 @@ const middleware = [
 
 const enhancers = [
   applyMiddleware(...middleware),
-  chromeExtension()
 ];
+
+chromeExtension(enhancers);
 
 export const composedEnhancers = compose(
   ...enhancers
