@@ -11,7 +11,7 @@ export default Router()
       .catch(next);
   })
 
-  .post('/users/login', (req, res, next) => {
+  .post('/users/signin', (req, res, next) => {
     const { email, password } = req.body;
     User.findOne({ email })
       .then(user => {

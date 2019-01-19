@@ -1,4 +1,4 @@
-import { signupRequest, loginRequest, verifyRequest } from '../../../services/mongo/users';
+import { signupRequest, signinRequest, verifyRequest } from '../../../services/mongo/users';
 
 export const SESSION_CREATE = 'SESSION_CREATE';
 export const SESSION_LOADING = 'SESSION_LOADING';
@@ -11,9 +11,9 @@ export const signup = ({ email, password }) => ({
 });
 
 
-export const login = ({ email, password }) => ({
+export const signin = ({ email, password }) => ({
   type: SESSION_CREATE,
-  payload: loginRequest({ email, password })
+  payload: signinRequest({ email, password })
 });
 
 export const refreshSession = () => ({

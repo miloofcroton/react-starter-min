@@ -21,7 +21,7 @@ export const CheckSession = Component => {
 
     render() {
       if (this.props.loading) return <h1>LOADING SESSION</h1>;
-      if (!this.props.session) return <Redirect to={ROUTES.LOGIN.linkTo()} />;
+      if (!this.props.session) return <Redirect to={ROUTES.SIGN_IN.linkTo()} />;
 
       return <Component {...this.props} />;
     }

@@ -6,8 +6,8 @@ export const signupRequest = ({ email, password }) => {
   return post(`${USERS_API}/signup`, { email, password });
 };
 
-export const loginRequest = ({ email, password }) => {
-  return post(`${USERS_API}/login`, { email, password });
+export const signinRequest = ({ email, password }) => {
+  return post(`${USERS_API}/signin`, { email, password });
 };
 
 export const verifyRequest = () => {

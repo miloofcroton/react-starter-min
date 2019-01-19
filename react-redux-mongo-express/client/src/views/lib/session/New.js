@@ -1,45 +1,24 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
-import { ROUTES } from '../../routes';
+import { connect } from 'react-redux';
+import { signup, signin } from '../../../data/store/resources/sessions/actions';
+import { getSession } from '../../../data/store/resources/sessions/selectors';
+import Form from './Form';
 
-export default class NewSession extends PureComponent {
-  static propTypes = {
-    typeText: PropTypes.string.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    sessions: PropTypes.object
-  };
+export const SignUp = connect(
+  state => ({
+    typeText: 'Sign Up',
+    session: getSession(state)
+  }),
+  dispatch => ({
+    onSubmit: ({ email, password }) => dispatch(signup({ email, password }))
+  })
+)(Form);
 
-  state = {
-    email: '',
-    password: '',
-  };
-
-  handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-
-    const { email, password } = this.state;
-    this.props.onSubmit({ email, password });
-  };
-
-  render() {
-    if (this.props.session) return <Redirect to={ROUTES.HOME.linkTo()} />;
-
-    const { typeText } = this.props;
-    const { email, password } = this.state;
-    return (
-      <>
-        <h3>{typeText}</h3>
-        <form onSubmit={this.handleSubmit}>
-          <input type="email" name="email" value={email} onChange={this.handleChange} />
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-          <button>{typeText}</button>
-        </form>
-      </>
-    );
-  }
-}
+export const SignIn = connect(
+  state => ({
+    typeText: 'Sign In',
+    session: getSession(state)
+  }),
+  dispatch => ({
+    onSubmit: ({ email, password }) => dispatch(signin({ email, password }))
+  })
+)(Form);
