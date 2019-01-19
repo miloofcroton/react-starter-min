@@ -1,9 +1,10 @@
 import {
   SESSION_CREATE,
+  SESSION_DELETE,
   SESSION_LOADING,
   SESSION_LOADED,
   SESSION_ERROR,
-  SESSION_TOKEN
+  SESSION_TOKEN,
 } from './actions';
 
 const initialState = {
@@ -17,6 +18,8 @@ export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
     case SESSION_CREATE:
       return { ...state, user: payload };
+    case SESSION_DELETE:
+      return { ...initialState };
     case SESSION_LOADING:
       return { ...state, loading: true };
     case SESSION_LOADED:
