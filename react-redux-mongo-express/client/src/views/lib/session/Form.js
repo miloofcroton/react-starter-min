@@ -7,7 +7,7 @@ export default class Form extends PureComponent {
   static propTypes = {
     typeText: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    sessions: PropTypes.object
+    session: PropTypes.object
   };
 
   state = {
@@ -19,8 +19,8 @@ export default class Form extends PureComponent {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = e => {
+    e.preventDefault();
 
     const { email, password } = this.state;
     this.props.onSubmit({ email, password });

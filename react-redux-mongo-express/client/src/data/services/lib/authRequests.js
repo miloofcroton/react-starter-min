@@ -1,7 +1,11 @@
+import store from '../../store';
+import { updateSessionToken } from '../../store/resources/sessions/actions';
+
 let token = window.localStorage.getItem('token');
 
 const setToken = newToken => {
   token = newToken;
+  store.dispatch(updateSessionToken(newToken));
   window.localStorage.setItem('token', newToken);
 };
 
@@ -9,7 +13,8 @@ export const request = (url, method, body) => {
   return fetch(url, {
     method,
     headers: {
-      Authorization: `Bearer ${token}`
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
     },
     body: JSON.stringify(body)
   })

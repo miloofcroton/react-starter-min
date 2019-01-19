@@ -5,9 +5,9 @@ import { Redirect } from 'react-router-dom';
 
 import { ROUTES } from '../../routes';
 import { getSession, getSessionLoading } from '../../../data/store/resources/sessions/selectors';
-import { refreshSession } from '../../../data/store/resources/sessions/selectors';
+import { refreshSession } from '../../../data/store/resources/sessions/actions';
 
-export const CheckSession = Component => {
+const CheckSession = Component => {
 
   class CheckSessionComponent extends PureComponent {
     static propTypes = {
@@ -35,3 +35,5 @@ export const CheckSession = Component => {
     dispatch => ({ refreshSession: () => dispatch(refreshSession()) })
   )(CheckSessionComponent);
 };
+
+export default CheckSession;

@@ -5,6 +5,7 @@ import { HttpError } from '../../middleware/error';
 
 export default Router()
   .post('/users/signup', (req, res, next) => {
+    console.log(req.body);
     const { email, password } = req.body;
     User.create({ email, password })
       .then(user => res.json(user))
