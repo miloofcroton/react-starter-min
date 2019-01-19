@@ -1,6 +1,6 @@
 import Items from '../content/items';
 
-export const SECTION_ROUTES = {
+export const SECTIONS_ROUTES = {
   ITEMS: {
     Component: Items,
     path: '/items',
