@@ -26,9 +26,13 @@ export const signin = ({ email, password }) => ({
   payload: signinRequest({ email, password })
 });
 
-export const signout = () => ({
-  type: SESSION_DELETE
-});
+export const signout = () => {
+  console.log('removing token');
+  window.localStorage.removeItem('token');
+  return {
+    type: SESSION_DELETE
+  };
+};
 
 export const refreshSession = () => ({
   type: SESSION_CREATE,
