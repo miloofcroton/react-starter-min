@@ -1,4 +1,5 @@
 import Items from '../content/items';
+import Things from '../content/things';
 
 import Check from '../lib/session/Check';
 
@@ -11,12 +12,12 @@ export const SECTIONS_ROUTES = {
     order: 3,
     label: 'Items',
   },
-  ITEMS_SECURE: {
-    Component: Check(Items),
-    path: '/items/secure',
-    linkTo: () => '/items/secure',
+  THINGS: {
+    Component: Check(Things),
+    path: '/things',
+    linkTo: () => '/things',
     nav: true,
     order: 4,
-    label: 'Items Secure',
+    label: 'Things',
   },
 };

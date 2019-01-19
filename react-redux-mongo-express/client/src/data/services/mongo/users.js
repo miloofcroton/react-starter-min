@@ -1,4 +1,4 @@
-import { post, get } from '../lib/authRequests';
+import { post, get } from './requests';
 
 const USERS_API = '/api/users';
 

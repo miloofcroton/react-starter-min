@@ -1,4 +1,4 @@
-import { get, post } from '../lib/requests';
+import { get, post } from './requests';
 
 const ITEMS_API = '/api/items';
 
