@@ -1,5 +1,9 @@
 import store from '../../store';
 import { updateSessionToken } from '../../store/resources/sessions/actions';
+import { getAuthToken } from '../../store/resources/oauth/selectors';
+
+
+// https://auth0.com/docs/quickstart/spa/react/03-calling-an-api
 
 let token = window.localStorage.getItem('token');
 
@@ -14,7 +18,7 @@ export const request = (url, method, body) => {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getAuthToken(store.getState())}`
     },
     body: JSON.stringify(body)
   })

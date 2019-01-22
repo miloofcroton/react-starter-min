@@ -19,7 +19,7 @@ export const checkJwt = jwt({
   }),
 
   // Validate the audience and the issuer.
-  audience: `${process.env.AUTH0_DOMAIN}`,
+  audience: `https://${process.env.AUTH0_DOMAIN}/api/v2/`,
   issuer: `https://${process.env.AUTH0_DOMAIN}/`,
   algorithms: ['RS256']
 });

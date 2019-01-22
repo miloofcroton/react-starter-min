@@ -4,6 +4,8 @@ import store from '../../store';
 import { updateAuthToken, updateSessionProfile } from '../../store/resources/oauth/actions';
 import { getAuthToken } from '../../store/resources/oauth/selectors';
 
+// https://auth0.com/docs/quickstart/spa/react
+
 export const signup = (email, password, name, photo) => {
   return new Promise((resolve, reject) => {
     auth0.signup({
@@ -25,7 +27,10 @@ export const signup = (email, password, name, photo) => {
 
 export const login = () => auth0.authorize();
 
-export const logout = () => auth0.logout();
+export const logout = () => {
+  window.localStorage.removeItem('isLoggedIn');
+  auth0.logout();
+};
 
 export const handleAuth = () => {
   return new Promise((resolve, reject) => {
@@ -70,4 +75,10 @@ export const updateMetadata = metadata => {
   management.patchUserMetadata(user.user_id, metadata, (err, profile) => {
     console.log(profile);
   });
+};
+
+
+const setSession = authResult => {
+  // Set isLoggedIn flag in localStorage
+  window.localStorage.setItem('isLoggedIn', 'true');
 };
