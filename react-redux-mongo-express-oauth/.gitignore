@@ -7,7 +7,7 @@ dist
 
 
 # local env files
-server/.env
+**/.env
 .env.local
 .env.*.local
 
