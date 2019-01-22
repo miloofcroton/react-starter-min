@@ -1,4 +1,4 @@
-import { LoadingFallback } from './LoadingFallback';
+import { LoadingFallback } from './index';
 
 describe('loadingFallback', () => {
   it('returns a loading component when loading', () => {

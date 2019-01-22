@@ -2,10 +2,13 @@ import { connect } from 'react-redux';
 import ItemList from './List';
 
 import { fetchItems } from '../../../../data/store/resources/items/actions';
-import { getItems } from '../../../../data/store/resources/items/selectors';
+import { getItems, isItemsLoading } from '../../../../data/store/resources/items/selectors';
+
+import { LoadingWithParagraph } from '../../../lib/loading';
 
 const mapStateToProps = state => ({
-  list: getItems(state)
+  data: getItems(state),
+  loading: isItemsLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -15,4 +18,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ItemList);
+)(LoadingWithParagraph(ItemList));

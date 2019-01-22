@@ -2,26 +2,29 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ItemCard from './Card';
 
-export default class ItemList extends PureComponent {
+class ItemList extends PureComponent {
 
   static propTypes = {
-    // list: PropTypes.array
+    data: PropTypes.array,
+    loading: PropTypes.bool,
   };
 
   componentDidMount() {
-    this.props.fetch();
+    // this.props.fetch();
   }
 
   render() {
-    const { list } = this.props;
+    const { data } = this.props;
 
     return (
       <div>
         <h2>List of items:</h2>
-        {!!list && list.map((item, index) => (
+        {!!data && data.map((item, index) => (
           <ItemCard key={index} item={item} />
         ))}
       </div>
     );
   }
 }
+
+export default ItemList;
