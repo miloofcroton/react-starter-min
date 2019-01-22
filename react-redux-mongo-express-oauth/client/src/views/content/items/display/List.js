@@ -9,10 +9,6 @@ class ItemList extends PureComponent {
     loading: PropTypes.bool,
   };
 
-  componentDidMount() {
-    // this.props.fetch();
-  }
-
   render() {
     const { data } = this.props;
 
