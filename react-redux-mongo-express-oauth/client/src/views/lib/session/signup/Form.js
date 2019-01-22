@@ -35,5 +35,4 @@ export default class SignUpForm extends PureComponent {
       </form>
     );
   }
-
-};
+}
