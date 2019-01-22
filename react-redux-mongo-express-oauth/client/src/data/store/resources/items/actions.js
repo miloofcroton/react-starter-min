@@ -1,3 +1,5 @@
+import store from '../../index';
+import { getFormValues } from 'redux-form';
 import { getItems, getItem, createItem } from '../../../services/mongo/items';
 
 export const FETCH_ITEMS = 'FETCH_ITEMS';
@@ -7,7 +9,7 @@ export const fetchItems = () => ({
   type: FETCH_ITEMS,
   loadStart: FETCH_ITEMS_LOADING,
   loadEnd: FETCH_ITEMS_DONE,
-  payload: getItems()
+  payload: getItems(),
 });
 
 export const FETCH_ITEM = 'FETCH_ITEM';
@@ -17,11 +19,15 @@ export const fetchItem = id => ({
   type: FETCH_ITEM,
   loadStart: FETCH_ITEM_LOADING,
   loadEnd: FETCH_ITEM_DONE,
-  payload: getItem(id)
+  payload: getItem(id),
 });
 
 export const POST_ITEM = 'POST_ITEM';
-export const postItem = item => ({
-  type: POST_ITEM,
-  payload: createItem(item)
-});
+export const postItem = () => {
+  const values = getFormValues('items')(store.getState());
+  const { title, description } = values;
+  return {
+    type: POST_ITEM,
+    payload: createItem({ title, description }),
+  };
+};

@@ -38,8 +38,24 @@ I want to outline some of the main tech choices, with my reasons for choosing th
 - ORM: Mongoose
 - Components: React
 - State: Redux
+  - probably a good idea to convert 100% to redux-thunk
 - Forms: Redux-Forms
   - Note about performance optimization: "It has not been a problem in any of our applications. We don't use the redux dev tools, but we do use logging middleware in development and performance is not a problem. Where you might run into problems is if you have a large enough application and you are wasting render cycles. If you change the value of 1 input field and all of the components on your page have to go through a render cycle just to determine they don't need to update, you will potentially see a performance issue. However, this is not a result of dispatching lots of actions, it's a problem with your application architecture. Use Immutable.js (or an immutable pattern) and PureRenderMixin and you'll be fine."
+  - submit events:
+    - not sure if it is better to compose the data in a component or in the action creator
+      - if in the action creator, importing the store is ugly. adopt this pattern when you have a chance (using redux-thunk):
+        ```
+        export const SOME_ACTION = 'SOME_ACTION';
+        export function someAction() {
+          return (dispatch, getState) => {
+            const { items } = getState().otherReducer;
+
+            dispatch(anotherAction(items));
+          }
+        }
+        ```
+      - if it is the component, why are you pulling data from the store that you never present? seems like a waste.
+  - better approach to submit events, using
 - Testing:
   - Jest
   - Enzyme
