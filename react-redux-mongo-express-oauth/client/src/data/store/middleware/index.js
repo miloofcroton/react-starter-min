@@ -12,6 +12,6 @@ const enhancers = [
 
 chromeExtension(enhancers);
 
-export const composedEnhancers = compose(
+export const rootEnhancer = compose(
   ...enhancers
 );
