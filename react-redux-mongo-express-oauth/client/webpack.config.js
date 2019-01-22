@@ -76,10 +76,10 @@ module.exports = env => {
           ]
         },
         {
-          test: /\.(jpg|png|svg)$/,
+          test: /\.(jpg|png|svg|gif)$/,
           use: {
-            loader: 'url-loader', // use file-loader if bundle size needs optimization
-            options: { limit: 1000 },
+            loader: 'url-loader',
+            options: { limit: 1000 }, // the fallback is file-loader if limit is exceeded
           },
         }
       ]
