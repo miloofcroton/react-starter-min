@@ -1,7 +1,7 @@
 import React from 'react';
 
-const LoadingParagraph = () => {
+const Paragraph = () => {
   return <p>LOADING</p>;
 };
 
-export default LoadingParagraph;
+export default Paragraph;
