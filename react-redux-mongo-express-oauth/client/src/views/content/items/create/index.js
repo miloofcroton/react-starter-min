@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { simpleHandleChange } from '../../../lib/functions/handleChange';
 
 export class ItemCreate extends PureComponent {
 
@@ -13,9 +14,7 @@ export class ItemCreate extends PureComponent {
     description: ''
   };
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  onChange = simpleHandleChange(this);
 
   createItem = e => {
     e.preventDefault();

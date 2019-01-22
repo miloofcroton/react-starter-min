@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { signup } from '../../../../data/services/oauth/functions';
 import { CORE_ROUTES } from '../../../routes/core';
+import { simpleHandleChange } from '../../functions/handleChange';
 
 export default class SignUpForm extends PureComponent {
 
@@ -11,9 +12,7 @@ export default class SignUpForm extends PureComponent {
     photo: ''
   };
 
-  handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
-  };
+  onChange = simpleHandleChange(this);
 
   handleSubmit = e => {
     e.preventDefault();
