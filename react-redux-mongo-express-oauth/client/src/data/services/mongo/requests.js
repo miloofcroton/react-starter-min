@@ -29,7 +29,7 @@ export const request = (url, method, body) => {
     })
     .then(([headers, json]) => {
       const newToken = headers.get('X-AUTH-TOKEN');
-      if (newToken && newToken !== token) setToken(newToken);
+      // if (newToken && newToken !== token) setToken(newToken);
       return json;
     });
 };
