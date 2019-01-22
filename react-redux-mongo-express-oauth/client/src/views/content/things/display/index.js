@@ -12,7 +12,6 @@ const mapDispatchToProps = dispatch => ({
   fetch: () => dispatch(fetchThings())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ThingList);
+const Data = connect(mapStateToProps, mapDispatchToProps);
+
+export default Data(ThingList);

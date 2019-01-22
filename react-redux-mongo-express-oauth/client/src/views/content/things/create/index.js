@@ -68,7 +68,6 @@ const mapDispatchToProps = dispatch => ({
   postThing: thing => dispatch(postThing(thing))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ThingCreate);
+const Data = connect(mapStateToProps, mapDispatchToProps);
+
+export default Data(ThingCreate);

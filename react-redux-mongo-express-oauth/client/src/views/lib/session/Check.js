@@ -10,11 +10,13 @@ const CheckSession = Component => {
     return <Component {...props} />;
   };
 
-  return connect(
-    state => ({
-      sessionToken: getSessionToken(state)
-    })
-  )(CheckSessionComponent);
+  const mapStateToProps = state => ({
+    sessionToken: getSessionToken(state)
+  });
+
+  const Data = connect(mapStateToProps);
+
+  return Data(CheckSessionComponent);
 };
 
 export default CheckSession;

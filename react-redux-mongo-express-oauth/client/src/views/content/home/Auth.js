@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { signout } from '../../../data/store/resources/sessions/actions';
-import { getSession } from '../../../data/store/resources/sessions/selectors';
+import { getSessionToken } from '../../../data/store/resources/sessions/selectors';
 
 class Auth extends PureComponent {
 
@@ -22,14 +22,13 @@ class Auth extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  session: getSession(state),
+  session: getSessionToken(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   signout: () => dispatch(signout()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Auth);
+const Data = connect(mapStateToProps, mapDispatchToProps);
+
+export default Data(Auth);
