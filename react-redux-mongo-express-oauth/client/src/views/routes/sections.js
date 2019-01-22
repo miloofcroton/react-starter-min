@@ -6,7 +6,7 @@ import { withAuth } from '../lib/oauth/withAuth';
 
 export const SECTIONS_ROUTES = {
   ITEMS: {
-    Component: withAuth(Items),
+    Component: Items,
     path: '/items',
     linkTo: () => '/items',
     nav: true,
@@ -14,7 +14,8 @@ export const SECTIONS_ROUTES = {
     label: 'Items',
   },
   THINGS: {
-    Component: Check(Things),
+    Component: withAuth(Things),
+    // Component: Things,
     path: '/things',
     linkTo: () => '/things',
     nav: true,
