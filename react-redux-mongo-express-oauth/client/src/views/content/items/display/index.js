@@ -8,16 +8,14 @@ import { LoadingGif } from '../../../lib/loading';
 import FromStore from '../../../lib/fetching/FromStore';
 
 const mapStateToProps = state => ({
-  data: getItems(state),
+  list: getItems(state),
   loading: isItemsLoading(state),
-  // loading: true
 });
 
 const mapDispatchToProps = dispatch => ({
   fetch: () => dispatch(fetchItems())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FromStore(LoadingGif(ItemList)));
+const Data = connect(mapStateToProps, mapDispatchToProps);
+
+export default Data(FromStore(LoadingGif(ItemList)));

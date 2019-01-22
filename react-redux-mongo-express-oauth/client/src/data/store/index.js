@@ -1,11 +1,11 @@
 import { createStore } from 'redux';
 
-import { combinedReducers } from './resources';
-import { composedEnhancers } from './middleware';
+import { rootReducer } from './resources';
+import { rootEnhancer } from './middleware';
 
 const store = createStore(
-  combinedReducers,
-  composedEnhancers
+  rootReducer,
+  rootEnhancer
 );
 
 export default store;

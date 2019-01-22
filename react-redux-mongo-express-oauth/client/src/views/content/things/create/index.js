@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { simpleHandleChange } from '../../../lib/functions/handleChange';
 
 export class ThingCreate extends PureComponent {
 
@@ -13,9 +14,7 @@ export class ThingCreate extends PureComponent {
     description: ''
   };
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  onChange = simpleHandleChange(this);
 
   createThing = e => {
     e.preventDefault();
@@ -68,7 +67,6 @@ const mapDispatchToProps = dispatch => ({
   postThing: thing => dispatch(postThing(thing))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ThingCreate);
+const Data = connect(mapStateToProps, mapDispatchToProps);
+
+export default Data(ThingCreate);
