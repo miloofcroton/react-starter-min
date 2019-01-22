@@ -11,6 +11,7 @@ export const Fallback = LoadingComponent => Component => {
   };
 };
 
+// useful if you don't want to use a higher order fetching component
 export const FallbackWithFetch = LoadingComponent => Component => {
   return class LoadingFallbackComponent extends PureComponent {
     componentDidMount() {
