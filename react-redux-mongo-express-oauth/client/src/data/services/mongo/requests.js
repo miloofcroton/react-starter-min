@@ -1,24 +1,24 @@
 import store from '../../store';
-import { updateSessionToken } from '../../store/resources/sessions/actions';
-import { getAuthToken } from '../../store/resources/oauth/selectors';
+// import { updateSessionToken } from '../../store/resources/sessions/actions';
+import { getSessionToken } from '../../store/resources/sessions/selectors';
 
 
 // https://auth0.com/docs/quickstart/spa/react/03-calling-an-api
 
-let token = window.localStorage.getItem('token');
+// let token = window.localStorage.getItem('token');
 
-const setToken = newToken => {
-  token = newToken;
-  store.dispatch(updateSessionToken(newToken));
-  window.localStorage.setItem('token', newToken);
-};
+// const setToken = newToken => {
+//   token = newToken;
+//   store.dispatch(updateSessionToken(newToken));
+//   window.localStorage.setItem('token', newToken);
+// };
 
 export const request = (url, method, body) => {
   return fetch(url, {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${getAuthToken(store.getState())}`
+      'Authorization': `Bearer ${getSessionToken(store.getState())}`
     },
     body: JSON.stringify(body)
   })

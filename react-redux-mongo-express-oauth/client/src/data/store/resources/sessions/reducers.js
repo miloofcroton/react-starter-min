@@ -1,33 +1,17 @@
-import {
-  SESSION_CREATE,
-  SESSION_DELETE,
-  SESSION_LOADING,
-  SESSION_LOADED,
-  SESSION_ERROR,
-  SESSION_TOKEN,
-} from './actions';
+import { UPDATE_SESSION_TOKEN, UPDATE_SESSION_USER } from './actions';
 
 const initialState = {
-  token: '',
+  token: null,
   user: null,
-  loading: true,
-  error: null
+  management: null
 };
 
-export default function reducer(state = initialState, { type, payload }) {
-  switch (type) {
-    case SESSION_CREATE:
-      return { ...state, user: payload };
-    case SESSION_DELETE:
-      return { ...initialState };
-    case SESSION_LOADING:
-      return { ...state, loading: true };
-    case SESSION_LOADED:
-      return { ...state, loading: false };
-    case SESSION_ERROR:
-      return { ...state, error: payload };
-    case SESSION_TOKEN:
-      return { ...state, token: payload };
+export default function reducer(state = initialState, action) {
+  switch (action.type) {
+    case UPDATE_SESSION_TOKEN:
+      return { ...state, token: action.payload };
+    case UPDATE_SESSION_USER:
+      return { ...state, user: action.user, management: action.management };
     default:
       return state;
   }

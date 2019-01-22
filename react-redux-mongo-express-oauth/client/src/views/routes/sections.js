@@ -1,8 +1,7 @@
 import Items from '../content/items';
 import Things from '../content/things';
 
-import Check from '../lib/session/Check';
-import { withAuth } from '../lib/oauth/withAuth';
+import CheckSession from '../lib/session/Check';
 
 export const SECTIONS_ROUTES = {
   ITEMS: {
@@ -14,8 +13,7 @@ export const SECTIONS_ROUTES = {
     label: 'Items',
   },
   THINGS: {
-    Component: withAuth(Things),
-    // Component: Things,
+    Component: CheckSession(Things),
     path: '/things',
     linkTo: () => '/things',
     nav: true,

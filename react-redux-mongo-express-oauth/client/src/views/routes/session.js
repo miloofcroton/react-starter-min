@@ -1,4 +1,6 @@
-import { SignUp, SignIn } from '../lib/session/New';
+import SignIn from '../lib/session/signin';
+import SignUp from '../lib/session/signup';
+import Callback from '../lib/session/Callback';
 
 export const SESSION_ROUTES = {
   SIGN_UP: {
@@ -10,5 +12,10 @@ export const SESSION_ROUTES = {
     path: '/signin',
     Component: SignIn,
     linkTo: () => '/signin'
+  },
+  CALLBACK: {
+    path: '/callback',
+    Component: Callback,
+    linkTo: () => '/callback'
   },
 };

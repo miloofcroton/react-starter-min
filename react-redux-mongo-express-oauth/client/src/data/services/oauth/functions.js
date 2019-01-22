@@ -1,8 +1,8 @@
 import { Management } from 'auth0-js';
 import { auth0 } from './config';
 import store from '../../store';
-import { updateAuthToken, updateSessionProfile } from '../../store/resources/oauth/actions';
-import { getAuthToken } from '../../store/resources/oauth/selectors';
+import { updateSessionToken, updateSessionProfile } from '../../store/resources/sessions/actions';
+import { getSessionToken } from '../../store/resources/sessions/selectors';
 
 // https://auth0.com/docs/quickstart/spa/react
 
@@ -25,10 +25,10 @@ export const signup = (email, password, name, photo) => {
 
 };
 
-export const login = () => auth0.authorize();
+export const signin = () => auth0.authorize();
 
-export const logout = () => {
-  window.localStorage.removeItem('isLoggedIn');
+export const signout = () => {
+  window.localStorage.removeItem('isSignedIn');
   auth0.logout();
 };
 
@@ -37,29 +37,27 @@ export const handleAuth = () => {
     auth0.parseHash((err, authResult) => {
       if (err) return reject(err);
 
-      console.log(authResult);
-
       if (authResult && authResult.accessToken) {
-        store.dispatch(updateAuthToken(authResult.accessToken));
+        store.dispatch(updateSessionToken(authResult.accessToken));
         getProfile(authResult.accessToken);
         return resolve(authResult.accessToken);
       }
 
-      resolve(getAuthToken(store.getState()));
+      resolve(getSessionToken(store.getState()));
     });
   });
 };
 
-export const getProfile = (authToken) => {
-  if (!authToken) return Promise.reject('No authToken in store');
+export const getProfile = (sessionToken) => {
+  if (!sessionToken) return Promise.reject('No session token in store');
 
   return new Promise((resolve, reject) => {
     const management = new Management({
       domain: process.env.AUTH0_DOMAIN,
-      token: authToken
+      token: sessionToken
     });
 
-    auth0.client.userInfo(authToken, (err, profile) => {
+    auth0.client.userInfo(sessionToken, (err, profile) => {
       if (err) return reject(err);
       management.getUser(profile.sub, (err, user) => {
         if (err) return reject(err);
@@ -79,6 +77,6 @@ export const updateMetadata = metadata => {
 
 
 const setSession = authResult => {
-  // Set isLoggedIn flag in localStorage
-  window.localStorage.setItem('isLoggedIn', 'true');
+  // Set isSignedIn flag in localStorage
+  window.localStorage.setItem('isSignedIn', 'true');
 };
