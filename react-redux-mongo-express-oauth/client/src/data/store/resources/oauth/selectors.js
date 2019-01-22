@@ -1,3 +1,3 @@
-export const getAuthToken = state => state.session.authToken;
+export const getAuthToken = state => state.oauth.authToken;
 
-export const getUser = state => state.session.user;
+export const getUser = state => state.oauth.user;

@@ -2,10 +2,11 @@ import Items from '../content/items';
 import Things from '../content/things';
 
 import Check from '../lib/session/Check';
+import { withAuth } from '../lib/oauth/withAuth';
 
 export const SECTIONS_ROUTES = {
   ITEMS: {
-    Component: Items,
+    Component: withAuth(Items),
     path: '/items',
     linkTo: () => '/items',
     nav: true,

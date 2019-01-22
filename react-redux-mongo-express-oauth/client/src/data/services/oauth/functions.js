@@ -32,6 +32,8 @@ export const handleAuth = () => {
     auth0.parseHash((err, authResult) => {
       if (err) return reject(err);
 
+      console.log(authResult);
+
       if (authResult && authResult.accessToken) {
         store.dispatch(updateAuthToken(authResult.accessToken));
         getProfile(authResult.accessToken);

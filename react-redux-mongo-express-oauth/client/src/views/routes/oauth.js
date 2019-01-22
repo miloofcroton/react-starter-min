@@ -1,4 +1,4 @@
-import { Login, Callback, SignupWithRouter } from '../lib/oauth/Auth';
+import { Callback, SignupWithRouter, LoginWithRouter } from '../lib/oauth/Auth';
 
 export const OAUTH_ROUTES = {
   SIGNUP: {
@@ -6,14 +6,14 @@ export const OAUTH_ROUTES = {
     Component: SignupWithRouter,
     linkTo: () => '/oauth/signup'
   },
-  // LOGIN: {
-  //   path: '/oauth/login',
-  //   Component: Login,
-  //   linkTo: () => '/oauth/login'
-  // },
+  LOGIN: {
+    path: '/oauth/login',
+    Component: LoginWithRouter,
+    linkTo: () => '/oauth/login'
+  },
   CALLBACK: {
-    path: '/oauth/callback',
+    path: '/callback',
     Component: Callback,
-    linkTo: () => '/oauth/callback'
+    linkTo: () => '/callback'
   },
 };
