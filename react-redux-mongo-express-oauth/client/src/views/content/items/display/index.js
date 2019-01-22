@@ -8,9 +8,8 @@ import { LoadingGif } from '../../../lib/loading';
 import FromStore from '../../../lib/fetching/FromStore';
 
 const mapStateToProps = state => ({
-  data: getItems(state),
+  list: getItems(state),
   loading: isItemsLoading(state),
-  // loading: true
 });
 
 const mapDispatchToProps = dispatch => ({
