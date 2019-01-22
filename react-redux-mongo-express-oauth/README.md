@@ -12,24 +12,56 @@ Table of contents
 =================
 
 <!--ts-->
-  * [About](#About)
-  * [Table of contents](#table-of-contents)
-  * [Project setup](#Project-setup)
-  * [Deployment](#Deployment)
-  * [Development Process](#Development-Process)
-    * [Full slices](#Full-slices)
-    * [Notes](#Notes)
-    * [VS Code folder icons](#VS-Code-folder-icons)
-  * [Issues](#Issues)
+  - [About](#About)
+  - [Table of contents](#table-of-contents)
+  - [Theory](#Theory)
+    - [Tech](#Tech)
+  - [Operations](#Operations)
+    - [Project setup](#Project-setup)
+    - [Deployment](#Deployment)
+  - [Development](#Development-Process)
+    - [Full slices](#Full-slices)
+    - [Notes](#Notes)
+    - [VS Code folder icons](#VS-Code-folder-icons)
+  - [Issues](#Issues)
 <!--te-->
 
-## Project setup
+## Theory
+
+### Tech
+
+I want to outline some of the main tech choices, with my reasons for choosing them, links to documentation, and any additional notes.
+
+- Server: Express
+- API design: REST
+- Database: MongoDB
+- ORM: Mongoose
+- Components: React
+- State: Redux
+- Forms: Redux-Forms
+  - Note about performance optimization: "It has not been a problem in any of our applications. We don't use the redux dev tools, but we do use logging middleware in development and performance is not a problem. Where you might run into problems is if you have a large enough application and you are wasting render cycles. If you change the value of 1 input field and all of the components on your page have to go through a render cycle just to determine they don't need to update, you will potentially see a performance issue. However, this is not a result of dispatching lots of actions, it's a problem with your application architecture. Use Immutable.js (or an immutable pattern) and PureRenderMixin and you'll be fine."
+- Testing:
+  - Jest
+  - Enzyme
+- Build Tools
+  - Webpack (ie not Create React App)
+  - Babel
+- Dev Tools
+  - ESLint
+
+
+I will fill this out more later.
+
+
+## Operations
+
+### Project setup
 
 * Run `npm install` in `/server` and `/client` to install packages.
 * Run `npm run start:watch` in `/server` and `/client` to get going with hot reloading.
 * Run `npm run test:watch` in both of these places to get tests running (in watch mode too)
 
-## Deployment
+### Deployment
 
 More details coming soon. The following is a prior process with Heroku:
 
@@ -45,7 +77,7 @@ More details coming soon. The following is a prior process with Heroku:
     8. `heroku open`
     9. Profit!
 
-## Development Process
+## Development
 
 ##### Full slices
 
