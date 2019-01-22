@@ -1,15 +1,17 @@
 /* eslint-env node */
 const HtmlPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const path = require('path');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
 
 module.exports = env => {
   const isProd = env === 'production';
 
   const devPlugins = isProd ? [] : [
-    // new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin(),
     new HtmlPlugin({ template: './src/index.html' }),
+    new Dotenv({ path: path.resolve(__dirname, './.env') }),
   ];
 
   return {
