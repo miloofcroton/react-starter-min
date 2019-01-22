@@ -25,5 +25,6 @@ export const checkJwt = jwt({
 });
 
 
+
 // example for using scopes
 export const checkScopes = jwtAuthz(['read:messages']);
