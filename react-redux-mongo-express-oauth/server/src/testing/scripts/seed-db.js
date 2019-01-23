@@ -1,32 +1,23 @@
 // const { dropCollection } = require('../util/db');
-import request from 'superagent';
+const axios = require('axios');
 const chance = require('chance').Chance();
 
-const HOST = 'http://localhost:9876';
+const HOST = 'http://localhost:7890';
 
-const things = [
-  { title: 'abc', description: 'def' },
-  { title: 'xyz', description: '123' },
-  { title: 'foo', description: 'bar' }
-];
+const ITEMS = 5;
 
-Promise.all(Array.apply(null, { length: 20 })
-  .map(() => ({ name: chance.name(), clearPassword: chance.word(), email: chance.email() }))
-  .map(user => {
-    return request
-      .post(`${HOST}/api/auth/signup`)
-      .send({ name: `${user.name}`, email: `${user.email}`, clearPassword: `${user.clearPassword}` })
-      .then(({ body }) => body.token);
+Promise.all(Array
+  .apply(null, { length: ITEMS })
+  .map(() => ({
+    title: chance.string({ length: 8 }),
+    description: chance.string({ length: 16 })
+  }))
+  .map(item => {
+    const { title, description } = item;
+    return axios({
+      method: 'post',
+      url: `${HOST}/api/items`,
+      data: { title, description }
+    });
   })
-)
-  .then(tokens => {
-    return Promise.all(tokens.map(token => {
-      return Promise.all(Array.apply(null, { length: 10 })
-        .map((_, i) => {
-          return request
-            .post(`${HOST}/api/things`)
-            .set('Authorization', `Bearer ${token}`)
-            .send(things[i % things.length]);
-        }));
-    }));
-  });
+);
