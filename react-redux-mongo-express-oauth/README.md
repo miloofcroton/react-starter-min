@@ -187,6 +187,7 @@ Optionally, you can install `Material Icon Theme` and add the following to your 
   - CMS setup
   - material ui?
   - postgres as an option?
+  - neo4j as an option?
   - graphql via apollo (server and/or client)?
   - containerized ops setup
 - improve lighthouse scores
