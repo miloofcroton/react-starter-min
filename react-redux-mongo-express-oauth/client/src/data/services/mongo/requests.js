@@ -1,6 +1,8 @@
+import axios from 'axios';
+
 import store from '../../store';
-// import { updateSessionToken } from '../../store/resources/sessions/actions';
 import { getSessionToken } from '../../store/resources/sessions/selectors';
+// import { updateSessionToken } from '../../store/resources/sessions/actions';
 
 
 // https://auth0.com/docs/quickstart/spa/react/03-calling-an-api
@@ -14,23 +16,23 @@ import { getSessionToken } from '../../store/resources/sessions/selectors';
 // };
 
 export const request = (url, method, body) => {
-  return fetch(url, {
+  return axios({
+    url,
     method,
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${getSessionToken(store.getState())}`
     },
-    body: JSON.stringify(body)
+    data: body
   })
-    .then(res => [res.ok, res.headers, res.json()])
-    .then(([ok, headers, json]) => {
-      if (!ok) throw new Error('Failed request');
-      return [headers, json];
+    .then(({ statusText, headers, data }) => {
+      if (statusText !== 'OK') throw new Error('Failed request');
+      return { headers, data };
     })
-    .then(([headers, json]) => {
-      const newToken = headers.get('X-AUTH-TOKEN');
+    .then(({ headers, data }) => {
+      const newToken = headers['X-AUTH-TOKEN'];
       // if (newToken && newToken !== token) setToken(newToken);
-      return json;
+      return data;
     });
 };
 
