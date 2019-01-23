@@ -1,4 +1,4 @@
-import store from '../../index';
+import { store } from '../../../../index';
 import { getFormValues } from 'redux-form';
 import { getItems, getItem, createItem } from '../../../services/mongo/items';
 
@@ -31,3 +31,28 @@ export const postItem = () => {
     payload: createItem({ title, description }),
   };
 };
+
+// new, with observables
+
+import { ajax } from 'rxjs/ajax';
+import { mergeMap, map } from 'rxjs/operators';
+import { ofType } from 'redux-observable';
+
+
+export const FETCH_ITEMS_NEW = 'FETCH_ITEMS_NEW';
+export const FETCH_ITEMS_NEW_FULFILLED = 'FETCH_ITEMS_NEW_FULFILLED';
+export const fetchItemsNew = () => ({ type: FETCH_ITEMS_NEW });
+export const fetchItemsNewFulfilled = payload => ({ type: FETCH_ITEMS_NEW_FULFILLED, payload });
+
+export const fetchItemsEpic = action$ => action$.pipe(
+  ofType(FETCH_ITEMS_NEW),
+  mergeMap(() =>
+    ajax({
+      method: 'GET',
+      url: '/api/items',
+      responseType: 'json'
+    }).pipe(
+      map(({ response }) => fetchItemsNewFulfilled(response))
+    )
+  )
+);

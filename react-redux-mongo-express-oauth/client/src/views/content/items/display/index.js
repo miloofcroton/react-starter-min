@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import ItemList from './List';
 
 import { fetchItems } from '../../../../data/store/resources/items/actions';
+import { fetchItemsNew } from '../../../../data/store/resources/items/actions';
 import { getItems, isItemsLoading, getFirstItem } from '../../../../data/store/resources/items/selectors';
 
 import { LoadingGif } from '../../../lib/loading';
@@ -14,7 +15,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch: () => dispatch(fetchItems())
+  fetch: () => dispatch(fetchItemsNew())
 });
 
 const Data = connect(mapStateToProps, mapDispatchToProps);

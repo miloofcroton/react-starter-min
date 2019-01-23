@@ -1,6 +1,6 @@
 import { Management } from 'auth0-js';
 import { auth0 } from './config';
-import store from '../../store';
+import { store } from '../../../index';
 import { updateSessionToken, updateSessionProfile } from '../../store/resources/sessions/actions';
 import { getSessionToken } from '../../store/resources/sessions/selectors';
 

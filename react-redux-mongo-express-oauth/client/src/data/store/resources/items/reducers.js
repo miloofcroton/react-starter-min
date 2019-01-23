@@ -4,7 +4,9 @@ import {
   FETCH_ITEMS,
   FETCH_ITEM_LOADING,
   FETCH_ITEM_DONE,
-  FETCH_ITEM
+  FETCH_ITEM,
+
+  FETCH_ITEMS_NEW_FULFILLED
 } from './actions';
 
 const initialState = {
@@ -13,20 +15,22 @@ const initialState = {
   details: null
 };
 
-export default function reducer(state = initialState, { type, payload }) {
-  switch (type) {
+export default function reducer(state = initialState, action) {
+  switch (action.type) {
     case FETCH_ITEMS_LOADING:
       return { ...state, loading: true };
     case FETCH_ITEMS_DONE:
       return { ...state, loading: false };
     case FETCH_ITEMS:
-      return { ...state, list: payload };
+      return { ...state, list: action.payload };
     case FETCH_ITEM_LOADING:
       return { ...state, loading: true };
     case FETCH_ITEM_DONE:
       return { ...state, loading: false };
     case FETCH_ITEM:
-      return { ...state, details: payload };
+      return { ...state, details: action.payload };
+    case FETCH_ITEMS_NEW_FULFILLED:
+      return { ...state, list: action.payload };
     default:
       return state;
   }

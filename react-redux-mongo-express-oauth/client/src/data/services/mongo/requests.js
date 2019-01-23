@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import store from '../../store';
+import { store } from '../../../index';
 import { getSessionToken } from '../../store/resources/sessions/selectors';
 // import { updateSessionToken } from '../../store/resources/sessions/actions';
 

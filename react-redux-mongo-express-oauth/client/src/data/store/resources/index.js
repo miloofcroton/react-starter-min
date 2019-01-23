@@ -10,3 +10,11 @@ export const rootReducer = combineReducers({
   items: itemsReducer,
   things: thingsReducer,
 });
+
+
+import { combineEpics } from 'redux-observable';
+import { fetchItemsEpic } from './items/actions';
+
+export const rootEpic = combineEpics(
+  fetchItemsEpic,
+);
