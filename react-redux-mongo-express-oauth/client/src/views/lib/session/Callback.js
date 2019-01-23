@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { handleAuth } from '../../../data/services/oauth/functions';
 import { CORE_ROUTES } from '../../routes/core';
 
-
 const Callback = withRouter(({ history }) => {
   handleAuth()
     .then(() => {

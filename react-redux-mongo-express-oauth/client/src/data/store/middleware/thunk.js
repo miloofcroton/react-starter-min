@@ -1,6 +1,9 @@
 export const thunk = store => next => action => {
+
+  const { dispatch, getState } = store;
+
   if (typeof action === 'function') {
-    action(store.dispatch, store.getState);
+    action(dispatch, getState);
   } else {
     return next(action);
   }
