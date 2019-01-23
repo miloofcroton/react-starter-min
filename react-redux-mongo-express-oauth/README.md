@@ -42,6 +42,7 @@ I want to outline some of the main tech choices, with my reasons for choosing th
 - Views
   - Components: React
   - CSS in JS: styled-components
+  - Routing: React Router
 - State:
   - Store: Redux
   - Async middleware: Redux-Observables
