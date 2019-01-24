@@ -1,8 +1,8 @@
 import { Management } from 'auth0-js';
-import { auth0 } from './config';
+import { auth0 } from '../../services/oauth/config';
 import { store } from '../../../index';
-import { updateSessionToken, updateSessionProfile } from '../../store/resources/sessions/actions';
-import { getSessionToken } from '../../store/resources/sessions/selectors';
+import { updateSessionToken, updateSessionProfile } from './actions';
+import { getSessionToken } from './selectors';
 
 // https://auth0.com/docs/quickstart/spa/react
 

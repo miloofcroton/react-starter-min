@@ -109,7 +109,7 @@ More details coming soon. The following is a prior process with Heroku:
   * `OPTIONAL:` if your data requires an external source, other than the database, write the libraries and integrations in /server/lib and /server/services
 * front end:
   * a file at /client/src/data/services/`<resource name>`
-  * a folder in /client/src/data/store/resources with `actions`, `reducers`, and `selectors` files
+  * a folder in /client/src/data/resources with `actions`, `reducers`, and `selectors` files
   * a folder at /client/src/views/content/`<resource name>` with any necessary view components inside
   * update `ROUTES` in /client/views/routes.js with any new routes
     * note: nav, order, and true are optional and add a link to the default header

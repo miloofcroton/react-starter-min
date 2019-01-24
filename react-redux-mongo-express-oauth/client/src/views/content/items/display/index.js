@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import ItemList from './List';
 
-import { fetchItemsStart } from '../../../../data/store/resources/items/actions';
-import { getItems, isItemsLoading, getFirstItem } from '../../../../data/store/resources/items/selectors';
+import { fetchItemsStart } from '../../../../data/resources/items/actions';
+import { getItems, isItemsLoading, getFirstItem } from '../../../../data/resources/items/selectors';
 
 import { LoadingGif } from '../../../lib/loading';
 import FromStore from '../../../lib/fetching/FromStore';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { handleAuth } from '../../../data/services/oauth/functions';
+import { handleAuth } from '../../../data/resources/sessions/effects';
 import { CORE_ROUTES } from '../../routes/core';
 
 const Callback = withRouter(({ history }) => {

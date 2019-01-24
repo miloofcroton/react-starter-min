@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getSessionToken } from '../../../data/store/resources/sessions/selectors';
+import { getSessionToken } from '../../../data/resources/sessions/selectors';
 
 const CheckSession = Component => {
   const CheckSessionComponent = (props) => {

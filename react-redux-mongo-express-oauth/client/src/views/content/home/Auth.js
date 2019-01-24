@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { signout } from '../../../data/store/resources/sessions/actions';
-import { getSessionToken } from '../../../data/store/resources/sessions/selectors';
+import { signout } from '../../../data/resources/sessions/actions';
+import { getSessionToken } from '../../../data/resources/sessions/selectors';
 
 class Auth extends PureComponent {
 

@@ -1,5 +1,3 @@
-
-
 export const UPDATE_SESSION_TOKEN = 'UPDATE_SESSION_TOKEN';
 export const updateSessionToken = sessionToken => ({
   type: UPDATE_SESSION_TOKEN,

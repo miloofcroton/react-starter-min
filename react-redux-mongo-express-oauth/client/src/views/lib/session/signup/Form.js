@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { signup } from '../../../../data/services/oauth/functions';
+import { signup } from '../../../../data/resources/sessions/effects';
 import { CORE_ROUTES } from '../../../routes/core';
 import { simpleHandleChange } from '../../functions/handleChange';
 

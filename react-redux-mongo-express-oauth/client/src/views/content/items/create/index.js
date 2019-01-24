@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { postItemStart } from '../../../../data/store/resources/items/actions';
+import { postItemStart } from '../../../../data/resources/items/actions';
 import ItemForm from './Form';
 
 const ItemCreate = ({ postItem }) => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { signin } from '../../../../data/services/oauth/functions';
+import { signin } from '../../../../data/resources/sessions/effects';
+
 
 import Button from './Button';
 
