@@ -3,6 +3,9 @@ import { ofType } from 'redux-observable';
 import { ajax } from 'rxjs/ajax';
 import { mergeMap, map } from 'rxjs/operators';
 
+// redux-form for posting with form data
+import { getFormValues } from 'redux-form';
+
 // action types to listen for
 import {
   FETCH_ITEMS_START,
@@ -16,7 +19,7 @@ import {
   postItemDone,
 } from '../resources/items/actions';
 
-export const fetchItemsEpic = action$ => action$.pipe(
+const fetchItemsEpic = action$ => action$.pipe(
   ofType(FETCH_ITEMS_START),
   mergeMap(() =>
     ajax({
@@ -29,12 +32,12 @@ export const fetchItemsEpic = action$ => action$.pipe(
   )
 );
 
-export const fetchItemEpic = action$ => action$.pipe(
+const fetchItemEpic = action$ => action$.pipe(
   ofType(FETCH_ITEM_START),
   mergeMap(action =>
     ajax({
       method: 'GET',
-      url: `/api/items${action.payload}`,
+      url: `/api/items/${action.payload}`,
       responseType: 'json'
     }).pipe(
       map(({ response }) => fetchItemDone(response))
@@ -42,9 +45,7 @@ export const fetchItemEpic = action$ => action$.pipe(
   )
 );
 
-import { getFormValues } from 'redux-form';
-
-export const postItemEpic = (action$, state$) => action$.pipe(
+const postItemEpic = (action$, state$) => action$.pipe(
   ofType(POST_ITEM_START),
   mergeMap(() =>
     ajax({
@@ -61,10 +62,10 @@ export const postItemEpic = (action$, state$) => action$.pipe(
   )
 );
 
-const itemEpics = [
+const itemsEpics = [
   fetchItemsEpic,
   fetchItemEpic,
   postItemEpic,
 ];
 
-export default itemEpics;
+export default itemsEpics;
