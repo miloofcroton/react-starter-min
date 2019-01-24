@@ -1,33 +1,19 @@
-import {
-  FETCH_ITEM_START,
-  FETCH_ITEM_DONE,
-  FETCH_ITEMS_START,
-  FETCH_ITEMS_DONE,
-  POST_ITEM_START,
-  POST_ITEM_DONE,
-} from './actions';
-
-const initialState = {
-  loading: false,
-  sending: false,
-  lastSent: {},
-  list: [],
-  details: null,
-};
+import * as types from './types';
+import initialState from './state';
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_ITEM_START:
+    case types.FETCH_ONE_START:
       return { ...state, loading: true };
-    case FETCH_ITEM_DONE:
+    case types.FETCH_ONE_DONE:
       return { ...state, loading: false, details: action.payload };
-    case FETCH_ITEMS_START:
+    case types.FETCH_LIST_START:
       return { ...state, loading: true };
-    case FETCH_ITEMS_DONE:
+    case types.FETCH_LIST_DONE:
       return { ...state, loading: false, list: action.payload };
-    case POST_ITEM_START:
+    case types.POST_ONE_START:
       return { ...state, sending: true };
-    case POST_ITEM_DONE:
+    case types.POST_ONE_DONE:
       return { ...state, sending: false, lastSent: action.payload };
     default:
       return state;

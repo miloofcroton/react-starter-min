@@ -7,6 +7,6 @@ export const updateSessionToken = sessionToken => ({
 export const UPDATE_SESSION_USER = 'UPDATE_SESSION_USER';
 export const updateSessionProfile = (user, management) => ({
   type: UPDATE_SESSION_USER,
-  user,
-  management
+  user: user,
+  management: management
 });

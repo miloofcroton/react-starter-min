@@ -1,33 +1,26 @@
-// Fetch things
-export const FETCH_THINGS_START = 'FETCH_THINGS_START';
-export const FETCH_THINGS_DONE = 'FETCH_THINGS_DONE';
-export const fetchThingsStart = () => ({
-  type: FETCH_THINGS_START
+import * as types from './types';
+
+export const fetchListStart = () => ({
+  type: types.FETCH_LIST_START
 });
-export const fetchThingsDone = things => ({
-  type: FETCH_THINGS_DONE,
+export const fetchListDone = things => ({
+  type: types.FETCH_LIST_DONE,
   payload: things,
 });
 
-// Fetch thing
-export const FETCH_THING_START = 'FETCH_THING_START';
-export const FETCH_THING_DONE = 'FETCH_THING_DONE';
-export const fetchThingStart = id => ({
-  type: FETCH_THING_START,
+export const fetchOneStart = id => ({
+  type: types.FETCH_ONE_START,
   payload: id,
 });
-export const fetchThingDone = thing => ({
-  type: FETCH_THING_DONE,
+export const fetchOneDone = thing => ({
+  type: types.FETCH_ONE_DONE,
   payload: thing,
 });
 
-// Post thing
-export const POST_THING_START = 'POST_THING_START';
-export const POST_THING_DONE = 'POST_THING_DONE';
-export const postThingStart = () => ({
-  type: POST_THING_START
+export const postOneStart = () => ({
+  type: types.POST_ONE_START
 });
-export const postThingDone = thing => ({
-  type: POST_THING_DONE,
+export const postOneDone = thing => ({
+  type: types.POST_ONE_DONE,
   payload: thing,
 });

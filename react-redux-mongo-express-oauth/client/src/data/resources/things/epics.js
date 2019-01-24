@@ -1,28 +1,15 @@
-// redux-observable and rxjs stuff
 import { ofType } from 'redux-observable';
 import { ajax } from 'rxjs/ajax';
 import { mergeMap, map } from 'rxjs/operators';
-
-// redux-form for posting with form data
 import { getFormValues } from 'redux-form';
 
-// action types to listen for
-import {
-  FETCH_THINGS_START,
-  FETCH_THING_START,
-  POST_THING_START,
-} from './actions';
-// action creators to call after
-import {
-  fetchThingsDone,
-  fetchThingDone,
-  postThingDone,
-} from './actions';
+import * as types from './types';
+import * as things from './actions';
 
 import { getSessionToken } from '../sessions/selectors';
 
-const fetchThingsEpic = (action$, state$) => action$.pipe(
-  ofType(FETCH_THINGS_START),
+export const fetchThingsEpic = (action$, state$) => action$.pipe(
+  ofType(types.FETCH_LIST_START),
   mergeMap(() =>
     ajax({
       method: 'GET',
@@ -33,13 +20,13 @@ const fetchThingsEpic = (action$, state$) => action$.pipe(
       },
       responseType: 'json',
     }).pipe(
-      map(({ response }) => fetchThingsDone(response))
+      map(({ response }) => things.fetchListDone(response))
     )
   )
 );
 
-const fetchThingEpic = (action$, state$) => action$.pipe(
-  ofType(FETCH_THING_START),
+export const fetchThingEpic = (action$, state$) => action$.pipe(
+  ofType(types.FETCH_ONE_START),
   mergeMap(action =>
     ajax({
       method: 'GET',
@@ -50,13 +37,13 @@ const fetchThingEpic = (action$, state$) => action$.pipe(
       },
       responseType: 'json',
     }).pipe(
-      map(({ response }) => fetchThingDone(response))
+      map(({ response }) => things.fetchOneDone(response))
     )
   )
 );
 
-const postThingEpic = (action$, state$) => action$.pipe(
-  ofType(POST_THING_START),
+export const postThingEpic = (action$, state$) => action$.pipe(
+  ofType(types.POST_ONE_START),
   mergeMap(() =>
     ajax({
       method: 'POST',
@@ -69,15 +56,7 @@ const postThingEpic = (action$, state$) => action$.pipe(
       responseType: 'json',
       body: getFormValues('things')(state$.value),
     }).pipe(
-      map(({ response }) => postThingDone(response))
+      map(({ response }) => things.postOneDone(response))
     )
   )
 );
-
-const thingsEpics = [
-  fetchThingsEpic,
-  fetchThingEpic,
-  postThingEpic,
-];
-
-export default thingsEpics;

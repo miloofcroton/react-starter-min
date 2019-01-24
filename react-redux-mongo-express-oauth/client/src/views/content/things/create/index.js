@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { postThingStart } from '../../../../data/resources/things/actions';
+import { postOneStart } from '../../../../data/resources/things/actions';
 import ThingForm from './Form';
 
 const ThingCreate = ({ postThing }) => {
@@ -22,7 +22,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postThing: () => dispatch(postThingStart())
+  postThing: () => dispatch(postOneStart())
 });
 
 const Data = connect(mapStateToProps, mapDispatchToProps);
