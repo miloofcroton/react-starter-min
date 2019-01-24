@@ -149,28 +149,3 @@ Optionally, you can install `Material Icon Theme` and add the following to your 
         "presentational": "Views"
     },
 ```
-
-## Issues
-
-* add notes for proper deployment and CI
-
-## Goals
-
-- improve oauth integration
-  - check for a login cookie instead of always having to login on reload
-  - make logout work
-  - improve auth components on front end
-  - clean up code
-- add the following:
-  - redux improvements:
-    - show more complex patterns in redux for dealing with data manipulation
-  - immutable.js?
-  - typescript?
-  - redux first router?
-  - CMS setup
-  - material ui?
-  - postgres as an option?
-  - neo4j as an option?
-  - graphql via apollo (server and/or client)?
-  - containerized ops setup
-- improve lighthouse scores
