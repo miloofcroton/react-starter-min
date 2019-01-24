@@ -11,13 +11,13 @@ import {
   FETCH_ITEMS_START,
   FETCH_ITEM_START,
   POST_ITEM_START,
-} from '../resources/items/actions';
+} from './actions';
 // action creators to call after
 import {
   fetchItemsDone,
   fetchItemDone,
   postItemDone,
-} from '../resources/items/actions';
+} from './actions';
 
 const fetchItemsEpic = action$ => action$.pipe(
   ofType(FETCH_ITEMS_START),

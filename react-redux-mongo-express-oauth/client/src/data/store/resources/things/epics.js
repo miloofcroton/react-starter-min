@@ -11,15 +11,15 @@ import {
   FETCH_THINGS_START,
   FETCH_THING_START,
   POST_THING_START,
-} from '../resources/things/actions';
+} from './actions';
 // action creators to call after
 import {
   fetchThingsDone,
   fetchThingDone,
   postThingDone,
-} from '../resources/things/actions';
+} from './actions';
 
-import { getSessionToken } from '../resources/sessions/selectors';
+import { getSessionToken } from '../sessions/selectors';
 
 const fetchThingsEpic = (action$, state$) => action$.pipe(
   ofType(FETCH_THINGS_START),
