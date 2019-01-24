@@ -16,11 +16,14 @@ I want to sort this out a little more...
 
 ### Near-term
 
-- higher order components to add:
+- higher order components:
   - forms
   - listing (actually use what is already there?)
-- redux improvements:
-  - show more complex patterns in redux for dealing with data manipulation
+- redux:
+  - hold errors in store along with loading state
+  - show normalized pattern with references
+  - show pure functions in effects.js that act on payload and return in action creator
+    - calculation before state is stored or another action is dispatched
 
 ### Planned
 
