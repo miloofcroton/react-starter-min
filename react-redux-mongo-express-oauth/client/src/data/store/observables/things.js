@@ -66,8 +66,6 @@ const postThingEpic = (action$, state$) => action$.pipe(
         'Authorization': `Bearer ${getSessionToken(state$.value)}`,
       },
       crossDomain: false,
-      // withCredentials: true,
-      // hasContent: true,
       responseType: 'json',
       body: getFormValues('things')(state$.value),
     }).pipe(
