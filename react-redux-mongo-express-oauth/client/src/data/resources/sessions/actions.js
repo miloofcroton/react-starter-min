@@ -1,12 +1,12 @@
-export const UPDATE_SESSION_TOKEN = 'UPDATE_SESSION_TOKEN';
+import * as types from './types';
+
 export const updateSessionToken = sessionToken => ({
-  type: UPDATE_SESSION_TOKEN,
+  type: types.SESSION_UPDATE_TOKEN,
   payload: sessionToken
 });
 
-export const UPDATE_SESSION_USER = 'UPDATE_SESSION_USER';
 export const updateSessionProfile = (user, management) => ({
-  type: UPDATE_SESSION_USER,
+  type: types.SESSION_UPDATE_PROFILE,
   user: user,
   management: management
 });
