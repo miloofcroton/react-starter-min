@@ -14,7 +14,7 @@ app.use(express.static('../client/dist'));
 app.use(express.json());
 
 // serving resourse routes
-import routes from './resources';
+import routes from './resources/index.ts';
 app.use('/api', routes);
 
 // serving the front end

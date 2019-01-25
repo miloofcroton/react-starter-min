@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.3.1",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -41,7 +42,9 @@
     "postcss-nested": "^4.1.0",
     "postcss-simple-vars": "^5.0.1",
     "prop-types": "^15.6.2",
+    "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
+    "typescript": "^3.2.4",
     "url-loader": "^1.1.2",
     "webpack": "^4.26.1",
     "webpack-bundle-analyzer": "^3.0.3",
@@ -49,6 +52,8 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
+    "@types/react": "^16.7.20",
+    "@types/react-dom": "^16.0.11",
     "auth0-js": "^9.9.0",
     "axios": "^0.18.0",
     "dotenv-webpack": "^1.7.0",
