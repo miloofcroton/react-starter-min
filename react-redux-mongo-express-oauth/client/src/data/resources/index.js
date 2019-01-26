@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
-import { reducer as formsReducer } from 'redux-form';
+import routerReducerCreator from './router/reducers';
+import formsReducer from './forms/reducers';
 import sessionsReducer from './sessions/reducers';
 import itemsReducer from './items/reducers';
 import thingsReducer from './things/reducers';
 
 export const createRootReducer = history => combineReducers({
-  router: connectRouter(history),
+  router: routerReducerCreator(history),
   form: formsReducer,
   session: sessionsReducer,
   items: itemsReducer,
