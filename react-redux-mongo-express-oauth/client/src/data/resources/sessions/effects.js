@@ -25,7 +25,7 @@ export const signup = (email, password, name, photo) => {
 
 };
 
-export const signin = () => auth0.authorize();
+// export const signin = () => auth0.authorize();
 
 export const signout = () => {
   window.localStorage.removeItem('isSignedIn');

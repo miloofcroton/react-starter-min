@@ -1,7 +1,8 @@
 import { ofType } from 'redux-observable';
 import { ajax } from 'rxjs/ajax';
 import { mergeMap, map } from 'rxjs/operators';
-import { getFormValues } from 'redux-form';
+
+import { getItemsForm } from '../forms/selectors';
 
 import * as types from './types';
 import * as items from './actions';
@@ -42,7 +43,7 @@ const postItem = (action$, state$) => action$.pipe(
         'Content-Type': 'application/json',
       },
       responseType: 'json',
-      body: getFormValues('items')(state$.value),
+      body: getItemsForm(state$.value),
     }).pipe(
       map(({ response }) => items.postOneDone(response))
     )
