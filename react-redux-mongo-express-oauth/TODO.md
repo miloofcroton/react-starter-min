@@ -9,6 +9,15 @@ I want to sort this out a little more...
     - check for a login cookie instead of always having to login on reload
     - make logout work
     - make all oauth actions occur via store actions
+      - remaining:
+        - handleAuth
+        - signUp
+        - getProfile
+        - updateMetadata
+        - setSession
+        - logout
+      - done, kinda:
+        - signIn
   - back end
     - do more?
 

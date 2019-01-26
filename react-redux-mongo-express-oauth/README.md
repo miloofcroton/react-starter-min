@@ -46,6 +46,7 @@ I want to outline some of the main tech choices, with my reasons for choosing th
 - State:
   - Store: Redux
   - Async middleware: Redux-observable
+    - note: the syntax will look a little weird in epics. see: https://github.com/ReactiveX/rxjs/blob/master/doc/pipeable-operators.md
   - Observables library: RxJS
   - Memoization library: Reselect
   - Router state: Connected-react-router
