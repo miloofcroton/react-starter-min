@@ -24,6 +24,8 @@ I want to sort this out a little more...
   - show normalized pattern with references
   - show pure functions in effects.js that act on payload and return in action creator
     - calculation before state is stored or another action is dispatched
+- observables
+  - actually use them to create live updates (without reloading page) from mongodb
 
 ### Planned
 
