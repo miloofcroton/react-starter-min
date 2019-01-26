@@ -1,7 +1,6 @@
 import { ofType } from 'redux-observable';
 // import { ajax } from 'rxjs/ajax';
 import { mergeMap, map } from 'rxjs/operators';
-
 import { auth0 } from '../../services/oauth/config';
 
 

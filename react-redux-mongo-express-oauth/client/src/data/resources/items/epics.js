@@ -1,9 +1,7 @@
 import { ofType } from 'redux-observable';
 import { ajax } from 'rxjs/ajax';
 import { mergeMap, map } from 'rxjs/operators';
-
 import { getItemsForm } from '../forms/selectors';
-
 import * as types from './types';
 import * as items from './actions';
 

@@ -18,9 +18,11 @@ import { combineEpics } from 'redux-observable';
 import { itemsEpics } from './items/epics';
 import { thingsEpics } from './things/epics';
 import { sessionsEpics } from './sessions/epics';
+import { routerEpics } from './router/epics';
 
 export const rootEpic = combineEpics(
   ...itemsEpics,
   ...thingsEpics,
   ...sessionsEpics,
+  ...routerEpics,
 );

@@ -1,12 +1,9 @@
 import { ofType } from 'redux-observable';
 import { ajax } from 'rxjs/ajax';
 import { mergeMap, map } from 'rxjs/operators';
-
-import { getThingsForm } from '../forms/selectors';
-
 import * as types from './types';
 import * as things from './actions';
-
+import { getThingsForm } from '../forms/selectors';
 import { getSessionToken } from '../sessions/selectors';
 
 const fetchThings = (action$, state$) => action$.pipe(

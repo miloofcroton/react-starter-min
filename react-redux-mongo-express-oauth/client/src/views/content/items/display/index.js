@@ -19,4 +19,5 @@ const mapDispatchToProps = dispatch => ({
 
 const Data = connect(mapStateToProps, mapDispatchToProps);
 
-export default Data(FromStore(LoadingGif(ItemList)));
+// export default Data(FromStore(LoadingGif(ItemList)));
+export default Data(LoadingGif(ItemList));
