@@ -41,13 +41,14 @@ I want to outline some of the main tech choices, with my reasons for choosing th
   - API design: REST
 - Views
   - Components: React
-  - CSS in JS: styled-components
+  - CSS in JS: Styled-components
   - Routing: React Router
 - State:
   - Store: Redux
-  - Async middleware: Redux-Observables
+  - Async middleware: Redux-observable
   - Observables library: RxJS
   - Memoization library: Reselect
+  - Router state: Connected-react-router
   - Form state: Redux-forms
     - Use PureComponents (and Immutable.js, possibly?) instead of functional components if performance becomes an issue. Potential performance issues are not with dispatching many actions but with causing many rerenders despite no changes in props.
 - Testing:
@@ -59,7 +60,8 @@ I want to outline some of the main tech choices, with my reasons for choosing th
   - Babel
 - Dev Tools
   - Linting: ESLint
-  - editorconfig
+  - Editor settings: editorconfig
+  - Hot loading: react-hot-loader
 - Typing
   - prop-types
 - HTTP Requests: Axios
