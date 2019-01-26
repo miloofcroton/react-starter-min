@@ -13,6 +13,8 @@ import Head from './layout/head';
 import Header from './layout/header';
 import Footer from './layout/footer';
 
+import { hot } from 'react-hot-loader/root';
+
 const App = () => {
 
   return (
@@ -30,4 +32,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default hot(App);

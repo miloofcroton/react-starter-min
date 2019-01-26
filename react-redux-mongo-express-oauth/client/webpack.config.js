@@ -15,7 +15,9 @@ module.exports = env => {
   ];
 
   return {
-    entry: './src/index.js',
+    entry: [
+      './src/index.js'
+    ],
     output: {
       filename: 'bundle.[hash].js',
       publicPath: '/'
