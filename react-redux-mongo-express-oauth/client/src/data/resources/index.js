@@ -15,12 +15,12 @@ export const createRootReducer = history => combineReducers({
 
 
 import { combineEpics } from 'redux-observable';
-import * as itemsEpics from './items/epics';
-import * as thingsEpics from './things/epics';
-import * as sessionsEpics from './sessions/epics';
+import { itemsEpics } from './items/epics';
+import { thingsEpics } from './things/epics';
+import { sessionsEpics } from './sessions/epics';
 
-export const rootEpic = () => combineEpics(
-  ...Object.values(itemsEpics),
-  ...Object.values(thingsEpics),
-  ...Object.values(sessionsEpics),
+export const rootEpic = combineEpics(
+  ...itemsEpics,
+  ...thingsEpics,
+  ...sessionsEpics,
 );

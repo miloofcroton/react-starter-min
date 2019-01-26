@@ -8,7 +8,7 @@ import * as things from './actions';
 
 import { getSessionToken } from '../sessions/selectors';
 
-export const fetchThingsEpic = (action$, state$) => action$.pipe(
+const fetchThings = (action$, state$) => action$.pipe(
   ofType(types.FETCH_LIST_START),
   mergeMap(() =>
     ajax({
@@ -25,7 +25,7 @@ export const fetchThingsEpic = (action$, state$) => action$.pipe(
   )
 );
 
-export const fetchThingEpic = (action$, state$) => action$.pipe(
+const fetchThing = (action$, state$) => action$.pipe(
   ofType(types.FETCH_ONE_START),
   mergeMap(action =>
     ajax({
@@ -42,7 +42,7 @@ export const fetchThingEpic = (action$, state$) => action$.pipe(
   )
 );
 
-export const postThingEpic = (action$, state$) => action$.pipe(
+const postThing = (action$, state$) => action$.pipe(
   ofType(types.POST_ONE_START),
   mergeMap(() =>
     ajax({
@@ -60,3 +60,9 @@ export const postThingEpic = (action$, state$) => action$.pipe(
     )
   )
 );
+
+export const thingsEpics = [
+  fetchThings,
+  fetchThing,
+  postThing,
+];

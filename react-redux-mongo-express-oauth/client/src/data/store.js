@@ -12,8 +12,8 @@ export const history = createBrowserHistory();
 const epicMiddleware = createEpicMiddleware();
 
 const middleware = [
-  routerMiddleware(history),
   epicMiddleware,
+  routerMiddleware(history),
 ];
 
 const enhancers = [
