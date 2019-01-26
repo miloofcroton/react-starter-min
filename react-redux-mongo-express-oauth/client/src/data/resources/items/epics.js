@@ -6,7 +6,7 @@ import { getFormValues } from 'redux-form';
 import * as types from './types';
 import * as items from './actions';
 
-export const fetchItemsEpic = action$ => action$.pipe(
+const fetchItems = action$ => action$.pipe(
   ofType(types.FETCH_LIST_START),
   mergeMap(() =>
     ajax({
@@ -19,7 +19,7 @@ export const fetchItemsEpic = action$ => action$.pipe(
   )
 );
 
-export const fetchItemEpic = action$ => action$.pipe(
+const fetchItem = action$ => action$.pipe(
   ofType(types.FETCH_ONE_START),
   mergeMap(action =>
     ajax({
@@ -32,7 +32,7 @@ export const fetchItemEpic = action$ => action$.pipe(
   )
 );
 
-export const postItemEpic = (action$, state$) => action$.pipe(
+const postItem = (action$, state$) => action$.pipe(
   ofType(types.POST_ONE_START),
   mergeMap(() =>
     ajax({
@@ -48,3 +48,9 @@ export const postItemEpic = (action$, state$) => action$.pipe(
     )
   )
 );
+
+export const itemsEpics = [
+  fetchItems,
+  fetchItem,
+  postItem
+];

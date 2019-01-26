@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { history } from '../data/store';
+import { Switch } from 'react-router-dom';
 import Switches from './layout/switches';
 
 import { ThemeProvider } from 'styled-components';
@@ -15,7 +17,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={constants}>
-      <BrowserRouter>
+      <ConnectedRouter history={history}>
         <Fragment>
           <Head/>
           <GlobalStyle/>
@@ -23,7 +25,7 @@ const App = () => {
           <Switch>{Switches()}</Switch>
           <Footer/>
         </Fragment>
-      </BrowserRouter>
+      </ConnectedRouter>
     </ThemeProvider>
   );
 };

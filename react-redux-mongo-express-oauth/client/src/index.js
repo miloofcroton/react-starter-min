@@ -1,11 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-
 import { Provider } from 'react-redux';
-import configureStore from './data/store';
-export const store = configureStore();
-
+import { configureStore } from './data/store';
 import App from './views/app';
+
+export const store = configureStore();
 
 render(
   <Provider store={store}>

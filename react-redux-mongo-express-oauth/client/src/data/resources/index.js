@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
 import { reducer as formsReducer } from 'redux-form';
 import sessionsReducer from './sessions/reducers';
 import itemsReducer from './items/reducers';
 import thingsReducer from './things/reducers';
 
-export const rootReducer = combineReducers({
+export const createRootReducer = history => combineReducers({
+  router: connectRouter(history),
   form: formsReducer,
   session: sessionsReducer,
   items: itemsReducer,
@@ -13,12 +15,12 @@ export const rootReducer = combineReducers({
 
 
 import { combineEpics } from 'redux-observable';
-import * as itemsEpics from './items/epics';
-import * as thingsEpics from './things/epics';
-import * as sessionsEpics from './sessions/epics';
+import { itemsEpics } from './items/epics';
+import { thingsEpics } from './things/epics';
+import { sessionsEpics } from './sessions/epics';
 
 export const rootEpic = combineEpics(
-  ...Object.values(itemsEpics),
-  ...Object.values(thingsEpics),
-  ...Object.values(sessionsEpics),
+  ...itemsEpics,
+  ...thingsEpics,
+  ...sessionsEpics,
 );
