@@ -14,7 +14,7 @@ Table of contents
 <!--ts-->
   - [About](#About)
   - [Table of contents](#table-of-contents)
-  - [Theory](#Theory)
+  - [Philosophy](#Philosophy)
     - [Tech](#Tech)
   - [Operations](#Operations)
     - [Project setup](#Project-setup)
@@ -26,7 +26,7 @@ Table of contents
   - [Issues](#Issues)
 <!--te-->
 
-## Theory
+## Philosophy
 
 ### Tech
 
