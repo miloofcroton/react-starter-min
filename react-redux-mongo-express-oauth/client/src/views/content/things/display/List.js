@@ -1,27 +1,21 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ThingCard from './Card';
 
-export default class ThingList extends PureComponent {
+const ThingList = ({ list }) => {
 
-  static propTypes = {
-    // list: PropTypes.array
-  };
+  return (
+    <div>
+      <h2>List of things:</h2>
+      {!!list && list.map((thing, index) => (
+        <ThingCard key={index} thing={thing} />
+      ))}
+    </div>
+  );
+};
 
-  componentDidMount() {
-    // this.props.fetch();
-  }
+ThingList.propTypes = {
+  list: PropTypes.array
+};
 
-  render() {
-    const { list } = this.props;
-
-    return (
-      <div>
-        <h2>List of things:</h2>
-        {!!list && list.map((thing, index) => (
-          <ThingCard key={index} thing={thing} />
-        ))}
-      </div>
-    );
-  }
-}
+export default ThingList;
