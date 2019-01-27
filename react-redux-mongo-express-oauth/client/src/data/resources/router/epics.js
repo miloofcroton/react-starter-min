@@ -1,21 +1,20 @@
 import { ofType } from 'redux-observable';
-import { mergeMap, map, catchError, of, subscribe } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import * as types from './types';
 import * as items from '../items/actions';
-import * as things from '../items/actions';
-import { dummyAction } from '../dummy';
+import * as things from '../things/actions';
 
-const requestItems = action$  => action$.pipe(
+const requestItems = action$ => action$.pipe(
   ofType(types.LOCATION_CHANGE),
-  map((response) => {
-    if (response.payload.location.pathname == '/items') {
-      return items.fetchListStart();
+  map(action => {
+    switch (action.payload.location.pathname) {
+      case '/items':
+        return items.fetchListStart();
+      case '/things':
+        return things.fetchListStart();
     }
-    else if (response.payload.location.pathname == '/things') {
-      return things.fetchListStart();
-    }
-    else return dummyAction();
   }),
+  filter(Boolean),
 );
 
 

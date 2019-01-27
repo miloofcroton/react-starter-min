@@ -9,7 +9,7 @@ export default class ThingList extends PureComponent {
   };
 
   componentDidMount() {
-    this.props.fetch();
+    // this.props.fetch();
   }
 
   render() {
