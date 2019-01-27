@@ -11,6 +11,6 @@ export const updateSessionProfile = (user, management) => ({
   management: management,
 });
 
-export const signInStart = () => ({
-  type: types.SIGN_IN_START,
+export const signIn = () => ({
+  type: types.SIGN_IN,
 });

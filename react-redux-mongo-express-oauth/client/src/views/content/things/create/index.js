@@ -17,14 +17,10 @@ ThingCreate.propTypes = {
   postThing: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-
-});
-
 const mapDispatchToProps = dispatch => ({
   postThing: () => dispatch(postOneStart())
 });
 
-const Data = connect(mapStateToProps, mapDispatchToProps);
+const Data = connect(null, mapDispatchToProps);
 
 export default Data(ThingCreate);

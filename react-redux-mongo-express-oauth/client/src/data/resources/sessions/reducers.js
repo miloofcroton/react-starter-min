@@ -7,7 +7,7 @@ export default function reducer(state = initialState, action) {
       return { ...state, token: action.payload };
     case types.SESSION_UPDATE_PROFILE:
       return { ...state, user: action.user, management: action.management };
-    case types.SIGN_IN_START:
+    case types.SIGN_IN:
       return { ...state };
     default:
       return state;
