@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signIn } from '../../../../data/resources/sessions/actions';
+import { signOut } from '../../../../data/resources/sessions/actions';
 import Button from './Button';
 
-const SignIn = ({ signIn }) => {
+const SignOut = ({ signOut }) => {
 
   return (
-    <Button handleClick={signIn} />
+    <Button handleClick={signOut} />
   );
 };
 
 const mapDispatchToProps = dispatch => ({
-  signIn: () => dispatch(signIn()),
+  signOut: () => dispatch(signOut()),
 });
 
 const Data = connect(null, mapDispatchToProps);
 
-export default Data(SignIn);
+export default Data(SignOut);

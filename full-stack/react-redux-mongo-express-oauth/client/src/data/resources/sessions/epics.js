@@ -8,10 +8,6 @@ import * as sessions from './actions';
 import { getSignupForm } from '../forms/selectors';
 
 
-// const signIn = action$ => action$.pipe(
-//   ofType(types.SIGN_IN),
-//   map(() => auth0.authorize())
-// );
 const signIn = action$ => action$.pipe(
   ofType(types.SIGN_IN),
   mergeMap(() => {
@@ -29,10 +25,18 @@ const signIn = action$ => action$.pipe(
 
 const signOut = action$ => action$.pipe(
   ofType(types.SIGN_OUT),
-  map(() => {
+  mergeMap(() => {
     window.localStorage.removeItem('isSignedIn');
-    return auth0.logout();
-  })
+    return new Promise((resolve, reject) => {
+      // fix this in production
+      // see: https://auth0.github.io/auth0.js/global.html#logout
+      auth0.logout({
+        clientID: process.env.AUTH0_CLIENT_ID,
+        returnTo: 'http://localhost:8080',
+      });
+    });
+  }),
+  filter(Boolean),
 );
 
 const signUp = (action$, state$) => action$.pipe(

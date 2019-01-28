@@ -11,10 +11,14 @@ export const updateSessionProfile = (user, management) => ({
   management: management,
 });
 
+export const signUp = () => ({
+  type: types.SIGN_UP,
+});
+
 export const signIn = () => ({
   type: types.SIGN_IN,
 });
 
-export const signUp = () => ({
-  type: types.SIGN_UP,
+export const signOut = () => ({
+  type: types.SIGN_OUT,
 });

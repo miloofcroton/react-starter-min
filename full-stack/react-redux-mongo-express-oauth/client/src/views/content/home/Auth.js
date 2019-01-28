@@ -3,14 +3,17 @@ import { connect } from 'react-redux';
 import { signout } from '../../../data/resources/sessions/actions';
 import { getSessionToken } from '../../../data/resources/sessions/selectors';
 
+import SignIn from '../../lib/session/signin';
+import SignOut from '../../lib/session/signout';
+
 const Auth = ({ session, signout }) => {
 
   return (
     <div>
       {
         (!!session && session.user !== null)
-          ? <button onClick={signout}>Sign Out</button>
-          : <p>Sign up or sign in!</p>
+          ? <SignOut />
+          : <SignIn />
       }
     </div>
   );
@@ -21,7 +24,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  signout: () => dispatch(signout()),
+  // signout: () => dispatch(signout()),
 });
 
 const Data = connect(mapStateToProps, mapDispatchToProps);
