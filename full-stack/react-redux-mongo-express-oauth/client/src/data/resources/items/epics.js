@@ -1,6 +1,6 @@
 import { ofType } from 'redux-observable';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { mergeMap, map } from 'rxjs/operators';
 
@@ -21,12 +21,7 @@ const fetchItems = (action$, state$) => action$.pipe(
         map(({ response }) => items.fetchListDone(response))
       );
     }
-    else {
-      return Observable.create(observer => {
-        observer.next(items.listExists());
-        observer.complete();
-      });
-    }
+    else return of(items.listExists());
   })
 );
 
