@@ -11,6 +11,8 @@ export default function reducer(state = initialState, action) {
       return { ...state, loading: true };
     case types.FETCH_LIST_DONE:
       return { ...state, loading: false, list: action.payload };
+    case types.LIST_EXISTS:
+      return { ...state, loading: false };
     case types.POST_ONE_START:
       return { ...state, sending: true };
     case types.POST_ONE_DONE:

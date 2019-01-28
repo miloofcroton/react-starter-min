@@ -2,20 +2,30 @@ import { ofType } from 'redux-observable';
 import { ajax } from 'rxjs/ajax';
 import { mergeMap, map } from 'rxjs/operators';
 import { getItemsForm } from '../forms/selectors';
+import { getItems } from './selectors';
 import * as types from './types';
 import * as items from './actions';
+import { empty, Observable } from 'rxjs';
 
-const fetchItems = action$ => action$.pipe(
+const fetchItems = (action$, state$) => action$.pipe(
   ofType(types.FETCH_LIST_START),
-  mergeMap(() =>
-    ajax({
-      method: 'GET',
-      url: '/api/items',
-      responseType: 'json'
-    }).pipe(
-      map(({ response }) => items.fetchListDone(response))
-    )
-  )
+  mergeMap(() => {
+    if (!getItems(state$.value).length) {
+      return ajax({
+        method: 'GET',
+        url: '/api/items',
+        responseType: 'json'
+      }).pipe(
+        map(({ response }) => items.fetchListDone(response))
+      );
+    }
+    else {
+      return Observable.create(observer => {
+        observer.next(items.listExists());
+        observer.complete();
+      });
+    }
+  })
 );
 
 const fetchItem = action$ => action$.pipe(

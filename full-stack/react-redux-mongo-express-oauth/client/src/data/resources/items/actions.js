@@ -7,6 +7,9 @@ export const fetchListDone = items => ({
   type: types.FETCH_LIST_DONE,
   payload: items,
 });
+export const listExists = () => ({
+  type: types.LIST_EXISTS,
+});
 
 export const fetchOneStart = id => ({
   type: types.FETCH_ONE_START,
