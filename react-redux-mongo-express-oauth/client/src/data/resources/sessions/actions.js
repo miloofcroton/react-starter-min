@@ -14,3 +14,7 @@ export const updateSessionProfile = (user, management) => ({
 export const signIn = () => ({
   type: types.SIGN_IN,
 });
+
+export const signUp = () => ({
+  type: types.SIGN_UP,
+});

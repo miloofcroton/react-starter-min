@@ -8,21 +8,23 @@ import { getSessionToken } from './selectors';
 
 export const signup = (email, password, name, photo) => {
   return new Promise((resolve, reject) => {
-    auth0.signup({
-      connection: 'Username-Password-Authentication',
-      email,
-      password,
-      username: email,
-      user_metadata: {
-        name,
-        photo
+    auth0.signup(
+      {
+        connection: 'Username-Password-Authentication',
+        email,
+        password,
+        username: email,
+        user_metadata: {
+          name,
+          photo
+        }
+      },
+      err => {
+        if (err) return reject(err);
+        resolve();
       }
-    }, err => {
-      if (err) return reject(err);
-      resolve();
-    });
+    );
   });
-
 };
 
 // export const signin = () => auth0.authorize();
