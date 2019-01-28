@@ -25,9 +25,7 @@ const signUp = (action$, state$) => action$.pipe(
   ofType(types.SIGN_UP),
   mergeMap(() => {
     const { email, password, name, photo } = getSignupForm(state$.value);
-    console.log(action$);
-    console.log(types.SIGN_OUT);
-    Observable.create(observer => {
+    return new Promise((resolve, reject) => {
       auth0.signup(
         {
           connection: 'Username-Password-Authentication',
@@ -39,14 +37,14 @@ const signUp = (action$, state$) => action$.pipe(
             photo
           }
         },
-        err => console.log(err)
+        err => {
+          if (err) return reject(err);
+          resolve();
+        }
       );
-      observer.complete();
-    }).pipe(
-      map(({ response }) => console.log(response))
-    );
+    });
   }),
-  // filter(Boolean),
+  filter(Boolean),
 );
 
 export const sessionsEpics = [

@@ -4,7 +4,7 @@ import * as types from './types';
 import * as items from '../items/actions';
 import * as things from '../things/actions';
 
-const requestItems = action$ => action$.pipe(
+const requestStuff = action$ => action$.pipe(
   ofType(types.LOCATION_CHANGE),
   map(action => {
     switch (action.payload.location.pathname) {
@@ -19,5 +19,5 @@ const requestItems = action$ => action$.pipe(
 
 
 export const routerEpics = [
-  requestItems
+  requestStuff
 ];

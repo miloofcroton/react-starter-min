@@ -1,11 +1,13 @@
 import { ofType } from 'redux-observable';
+
+import { Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { mergeMap, map } from 'rxjs/operators';
+
 import { getItemsForm } from '../forms/selectors';
 import { getItems } from './selectors';
 import * as types from './types';
 import * as items from './actions';
-import { empty, Observable } from 'rxjs';
 
 const fetchItems = (action$, state$) => action$.pipe(
   ofType(types.FETCH_LIST_START),
