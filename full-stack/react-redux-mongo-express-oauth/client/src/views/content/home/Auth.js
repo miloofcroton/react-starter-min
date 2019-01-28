@@ -6,7 +6,7 @@ import { getSessionToken } from '../../../data/resources/sessions/selectors';
 import SignIn from '../../lib/session/signin';
 import SignOut from '../../lib/session/signout';
 
-const Auth = ({ session, signout }) => {
+const Auth = ({ session }) => {
 
   return (
     <div>
@@ -23,10 +23,6 @@ const mapStateToProps = state => ({
   session: getSessionToken(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  // signout: () => dispatch(signout()),
-});
-
-const Data = connect(mapStateToProps, mapDispatchToProps);
+const Data = connect(mapStateToProps);
 
 export default Data(Auth);
