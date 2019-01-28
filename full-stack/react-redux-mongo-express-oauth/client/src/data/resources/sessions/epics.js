@@ -8,9 +8,23 @@ import * as sessions from './actions';
 import { getSignupForm } from '../forms/selectors';
 
 
+// const signIn = action$ => action$.pipe(
+//   ofType(types.SIGN_IN),
+//   map(() => auth0.authorize())
+// );
 const signIn = action$ => action$.pipe(
   ofType(types.SIGN_IN),
-  map(() => auth0.authorize())
+  mergeMap(() => {
+    return new Promise((resolve, reject) => {
+      auth0.authorize(
+        err => {
+          if (err) return reject(err);
+          resolve();
+        }
+      );
+    });
+  }),
+  filter(Boolean),
 );
 
 const signOut = action$ => action$.pipe(
