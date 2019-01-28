@@ -21,7 +21,6 @@ const requestStuff = action$ => action$.pipe(
   filter(Boolean),
 );
 
-
 export const routerEpics = [
-  requestStuff
+  requestStuff,
 ];

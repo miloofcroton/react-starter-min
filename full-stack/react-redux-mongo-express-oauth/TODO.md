@@ -7,16 +7,6 @@ I want to sort this out a little more...
 - OAuth
   - front end
     - check for a login cookie instead of always having to login on reload
-    - make all oauth actions occur via store actions
-      - remaining:
-        - handleAuth
-        - getProfile
-        - updateMetadata
-        - setSession
-      - done:
-        - signIn
-        - signUp
-        - logout
   - back end
     - do more?
 
