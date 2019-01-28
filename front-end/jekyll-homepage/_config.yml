@@ -1,0 +1,38 @@
+# Site settings
+title: Jack Toumey
+email: jack@toumey.io
+description: Software Developer
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+author:
+street_address: 1234 Somewhere Road
+city: Somewhere
+state: CA
+zip_code: 55555
+country: United States of America
+phone: (716) 555-5555
+
+icon: fas fa-home # Font Awesome class for your site's icon
+
+# Social settings
+github_username: miloofcroton
+github_url: https://github.com/miloofcroton
+pgp_key: /assets/etc/public.key
+business_card: /assets/etc/contact.vcf
+
+facebook_url:
+googleplus_url:
+instagram_url:
+linkedin_url:
+pinterest_url:
+slack_url:
+twitter_url:
+
+# Build settings
+markdown: kramdown
+theme:
+plugins:
+  - jekyll-feed
+
+# Formatting settings
+excerpt_separator: <!--more-->

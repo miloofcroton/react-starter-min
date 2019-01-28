@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<About /> renders 1`] = `
+<dataWrapper>
+  <AboutPageTemplate
+    content="xyz"
+    contentComponent={[Function]}
+    title="asdf"
+  />
+</dataWrapper>
+`;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders 1`] = `
+<header>
+  <h1>
+    Jack Toumey
+  </h1>
+  <styled.nav>
+    <Styled(mockConstructor)
+      key="0"
+      to="/"
+    >
+      Home
+    </Styled(mockConstructor)>
+    <Styled(mockConstructor)
+      key="1"
+      to="/about"
+    >
+      About
+    </Styled(mockConstructor)>
+  </styled.nav>
+</header>
+`;

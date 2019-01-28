@@ -1,0 +1,18 @@
+# for macs
+.DS_Store
+
+# for node
+node_modules
+npm-debug.log*
+
+# for vscode
+.vscode
+
+# for env vars
+.env
+.env.local
+.env.*.local
+
+# for next
+dist
+.next

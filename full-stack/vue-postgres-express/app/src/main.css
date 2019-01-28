@@ -1,0 +1,35 @@
+
+
+* {
+  font-family: Lato, Helvetica, Corbel, sans-serif;
+}
+
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin: 0;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  width: 100vw;
+}
+
+body, html, .app {
+  min-height: 100%;
+}
+
+main {
+  background: url(./assets/background.jpg);
+  background-size: cover;
+}
+
+:root {
+  /* COLORS */
+  --gymred: rgb(172,73,49);
+  --lightgymred: rgba(202, 160, 150, 0.7);
+}

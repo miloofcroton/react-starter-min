@@ -1,0 +1,39 @@
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Header -->
+		<header id="header">
+			<div class="logo">
+				<span class="icon {{ site.icon }}"></span>
+			</div>
+			<div class="content">
+				<div class="inner">
+					<h1>{{ site.title }}</h1>
+					<p>{{ site.description }}</p>
+				</div>
+			</div>
+			<nav>
+				<ul>
+					{% assign sorted_pages = site.pages | sort:"order" %}
+
+					{% for page in sorted_pages %}
+						{% if page.layout == 'primary' %}
+  						<li><a href="#{{ page.title }}">{{ page.title }}</a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</nav>
+		</header>
+
+		<ul class="icons">
+			<li><a href="{{ site.business_card }}" class="icon fas fa-address-book" download><span class="label">Business Card</span></a></li>
+			<li><a href="#contact" class="icon fas fa-edit" <span class="label"></span></a></li>
+			<li><a href="mailto:{{ site.email }}" class="icon fas fa-envelope" target="_blank"><span class="label">Email</span></a></li>
+			<li><a href="{{ site.github_url }}" class="icon fab fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+			<li><a href="{{ site.pgp_key }}" class="icon fas fa-key" download><span class="label">Public Key</span></a></li>
+		</ul>
+
+
+
+	<!-- Main -->
+		<div id="main">
