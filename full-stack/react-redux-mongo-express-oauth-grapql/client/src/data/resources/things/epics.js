@@ -5,20 +5,26 @@ import * as types from './types';
 import * as things from './actions';
 import { getThingsForm } from '../forms/selectors';
 import { getSessionToken } from '../sessions/selectors';
+import {
+  allThings,
+  oneThing,
+  createThing,
+} from './requests';
 
 const fetchThings = (action$, state$) => action$.pipe(
   ofType(types.FETCH_LIST_START),
   mergeMap(() =>
     ajax({
-      method: 'GET',
-      url: '/api/things',
+      method: 'POST',
+      url: '/graphql?',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getSessionToken(state$.value)}`
       },
       responseType: 'json',
+      body: allThings(),
     }).pipe(
-      map(({ response }) => things.fetchListDone(response))
+      map(({ response }) => things.fetchListDone(response.data.things))
     )
   )
 );
@@ -27,15 +33,16 @@ const fetchThing = (action$, state$) => action$.pipe(
   ofType(types.FETCH_ONE_START),
   mergeMap(action =>
     ajax({
-      method: 'GET',
-      url: `/api/things/${action.payload}`,
+      method: 'POST',
+      url: '/graphql?',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getSessionToken(state$.value)}`
       },
       responseType: 'json',
+      body: oneThing(action.payload),
     }).pipe(
-      map(({ response }) => things.fetchOneDone(response))
+      map(({ response }) => things.fetchOneDone(response.data.thing))
     )
   )
 );
@@ -45,16 +52,16 @@ const postThing = (action$, state$) => action$.pipe(
   mergeMap(() =>
     ajax({
       method: 'POST',
-      url: '/api/things',
+      url: '/graphql?',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${getSessionToken(state$.value)}`,
       },
       crossDomain: false,
       responseType: 'json',
-      body: getThingsForm(state$.value),
+      body: createThing(getThingsForm(state$.value)),
     }).pipe(
-      map(({ response }) => things.postOneDone(response))
+      map(({ response }) => things.postOneDone(response.data.thing))
     )
   )
 );
