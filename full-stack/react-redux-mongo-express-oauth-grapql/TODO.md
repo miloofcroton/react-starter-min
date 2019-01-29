@@ -38,7 +38,8 @@ I want to sort this out a little more...
   - postgres as an option
   - neo4j as an option
 - APIs
-  - graphql via apollo (server and/or client)?
+  - apollo (server and/or client)?
+  - prisma?
 - Ops
   - containerized ops setup
 - documentation

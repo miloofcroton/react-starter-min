@@ -38,7 +38,7 @@ I want to outline some of the main tech choices, with my reasons for choosing th
 - Data
   - DB: MongoDB
   - ORM: Mongoose
-  - API design: REST
+  - API design: GraphQL
 - Views
   - Components: React
   - CSS in JS: Styled-components
