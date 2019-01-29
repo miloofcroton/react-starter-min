@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
 
-import app from './app';
 import { config } from 'dotenv';
-import { connect } from './services/mongo/connection';
 config();
+
+import app from './app';
+
+import { connect } from './services/mongo/connection';
 connect();
 
 const PORT = process.env.PORT || 7890;

@@ -9,13 +9,24 @@ const app = express();
 import morgan from 'morgan';
 app.use(morgan('dev', { skip: () => process.env.NODE_ENV === 'development' }));
 
-// basic express stuff
+// using the built server
 app.use(express.static('../client/dist'));
-app.use(express.json());
 
-// serving resourse routes
-import routes from './resources';
-app.use('/api', routes);
+// parsing the body
+import bodyParser from 'body-parser';
+app.use(bodyParser.json());
+
+// to protect the entire GraphQL api
+import { checkJwt } from './middleware/oauth';
+app.use(checkJwt);
+
+// serving the GraphQL api
+import graphqlHTTP from 'express-graphql';
+import schema from './resources';
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true
+}));
 
 // serving the front end
 import spa from './middleware/spa';
