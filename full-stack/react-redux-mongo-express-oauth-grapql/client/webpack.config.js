@@ -27,7 +27,7 @@ module.exports = env => {
       port: 8080,
       historyApiFallback: true,
       proxy: {
-        '/api': {
+        '/graphql': {
           target: 'http://localhost:7890',
           secure: false
         }
