@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import mongoose from 'mongoose';
 
-export const connectDb = () => {
+export const connect = () => {
   if (process.env.TEST_DATABASE_URL) {
     return mongoose.connect(
       process.env.TEST_DATABASE_URL,
@@ -16,3 +16,5 @@ export const connectDb = () => {
     );
   }
 };
+
+export const disconnect = () => mongoose.connection.close();

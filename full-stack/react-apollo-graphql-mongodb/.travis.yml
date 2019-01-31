@@ -1,0 +1,13 @@
+language: node_js
+node_js: "10.10.0"
+services:
+  - mongodb
+env:
+  MONGODB_URI: mongodb://localhost:27017/starter
+  APP_SECRET: Dummy$ecret
+deploy:
+  provider: heroku
+  app:
+    master: name-of-heroku-app
+  api_key:
+    secure: <see readme>

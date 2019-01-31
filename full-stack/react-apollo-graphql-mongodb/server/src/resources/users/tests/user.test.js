@@ -1,16 +1,15 @@
-import { expect } from 'chai';
-
-import * as api from './api';
-import models, { connectDb } from '../models';
 import mongoose from 'mongoose';
+import api from '../../../testing/helpers';
+import { connect } from '../../../services/mongo/connection';
+import { models } from '../../index';
 
 let db;
 let expectedUsers;
 let expectedUser;
 let expectedAdminUser;
 
-before(async () => {
-  db = await connectDb('mongodb://localhost:27017/new-graphql');
+beforeAll(async () => {
+  db = await connect();
 
   expectedUsers = await models.User.find();
 
@@ -23,11 +22,12 @@ before(async () => {
   )[0];
 });
 
-after(async () => {
+afterAll(async () => {
   await db.connection.close();
 });
 
 describe('users', () => {
+
   describe('user(id: String!): User', () => {
     it('returns a user when user can be found', async () => {
       const expectedResult = {
@@ -43,7 +43,7 @@ describe('users', () => {
 
       const result = await api.user({ id: expectedUser.id });
 
-      expect(result.data).to.eql(expectedResult);
+      expect(result.data).toEqual(expectedResult);
     });
 
     it('returns null when user cannot be found', async () => {
@@ -57,7 +57,7 @@ describe('users', () => {
         id: new mongoose.Types.ObjectId(),
       });
 
-      expect(result.data).to.eql(expectedResult);
+      expect(result.data).toEqual(expectedResult);
     });
   });
 
@@ -84,7 +84,7 @@ describe('users', () => {
 
       const result = await api.users();
 
-      expect(result.data).to.eql(expectedResult);
+      expect(result.data).toEqual(expectedResult);
     });
   });
 
@@ -98,7 +98,7 @@ describe('users', () => {
 
       const { data } = await api.me();
 
-      expect(data).to.eql(expectedResult);
+      expect(data).toEqual(expectedResult);
     });
 
     it('returns me when me is signed in', async () => {
@@ -119,13 +119,13 @@ describe('users', () => {
           },
         },
       } = await api.signIn({
-        login: 'rwieruch',
-        password: 'rwieruch',
+        login: 'iamroot',
+        password: 'Passw0rd!',
       });
 
       const { data } = await api.me(token);
 
-      expect(data).to.eql(expectedResult);
+      expect(data).toEqual(expectedResult);
     });
   });
 
@@ -140,13 +140,13 @@ describe('users', () => {
           },
         },
       } = await api.signUp({
-        username: 'Mark',
-        email: 'mark@gmule.com',
-        password: 'asdasdasd',
+        username: 'Zorro',
+        email: 'zorro@oldwest.com',
+        password: 'testtest',
       });
 
       const expectedNewUser = await models.User.findByLogin(
-        'mark@gmule.com',
+        'zorro@oldwest.com',
       );
 
       const {
@@ -155,7 +155,7 @@ describe('users', () => {
         },
       } = await api.me(token);
 
-      expect(me).to.eql({
+      expect(me).toEqual({
         id: expectedNewUser.id,
         username: expectedNewUser.username,
         email: expectedNewUser.email,
@@ -167,9 +167,9 @@ describe('users', () => {
         data: {
           data: { updateUser },
         },
-      } = await api.updateUser({ username: 'Marc' }, token);
+      } = await api.updateUser({ username: 'Zorro' }, token);
 
-      expect(updateUser.username).to.eql('Marc');
+      expect(updateUser.username).toEqual('Zorro');
 
       // delete as admin
 
@@ -180,8 +180,8 @@ describe('users', () => {
           },
         },
       } = await api.signIn({
-        login: 'rwieruch',
-        password: 'rwieruch',
+        login: 'iamroot',
+        password: 'Passw0rd!',
       });
 
       const {
@@ -190,7 +190,7 @@ describe('users', () => {
         },
       } = await api.deleteUser({ id: me.id }, adminToken);
 
-      expect(deleteUser).to.eql(true);
+      expect(deleteUser).toEqual(true);
     });
   });
 
@@ -203,15 +203,15 @@ describe('users', () => {
           },
         },
       } = await api.signIn({
-        login: 'ddavids',
-        password: 'ddavids',
+        login: 'thedude',
+        password: 'duderino',
       });
 
       const {
         data: { errors },
       } = await api.deleteUser({ id: expectedAdminUser.id }, token);
 
-      expect(errors[0].message).to.eql('Not authorized as admin.');
+      expect(errors[0].message).toEqual('Not authorized as admin.');
     });
   });
 
@@ -219,9 +219,9 @@ describe('users', () => {
     it('returns an error because only authenticated users can update a user', async () => {
       const {
         data: { errors },
-      } = await api.updateUser({ username: 'Marc' });
+      } = await api.updateUser({ username: 'Zorro' });
 
-      expect(errors[0].message).to.eql('Not authenticated as user.');
+      expect(errors[0].message).toEqual('Not authenticated as user.');
     });
   });
 
@@ -234,11 +234,11 @@ describe('users', () => {
           },
         },
       } = await api.signIn({
-        login: 'ddavids',
-        password: 'ddavids',
+        login: 'thedude',
+        password: 'duderino',
       });
 
-      expect(token).to.be.a('string');
+      expect(typeof token).toBe('string');
     });
 
     it('returns a token when a user signs in with email', async () => {
@@ -249,22 +249,22 @@ describe('users', () => {
           },
         },
       } = await api.signIn({
-        login: 'hello@david.com',
-        password: 'ddavids',
+        login: 'dude@dude.com',
+        password: 'duderino',
       });
 
-      expect(token).to.be.a('string');
+      expect(typeof token).toBe('string');
     });
 
     it('returns an error when a user provides a wrong password', async () => {
       const {
         data: { errors },
       } = await api.signIn({
-        login: 'ddavids',
+        login: 'thedude',
         password: 'dontknow',
       });
 
-      expect(errors[0].message).to.eql('Invalid password.');
+      expect(errors[0].message).toEqual('Invalid password.');
     });
   });
 
@@ -273,10 +273,10 @@ describe('users', () => {
       data: { errors },
     } = await api.signIn({
       login: 'dontknow',
-      password: 'ddavids',
+      password: 'duderino',
     });
 
-    expect(errors[0].message).to.eql(
+    expect(errors[0].message).toEqual(
       'No user found with this login credentials.',
     );
   });

@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, Types } from 'mongoose';
+import mongoose from 'mongoose';
 
 const itemSchema = new mongoose.Schema({
   title: {

@@ -47,7 +47,7 @@ Client Applications:
 * fill out *.env file* (see below)
 * `npm start`
 * [start MongoDB](https://www.robinwieruch.de/mongodb-express-setup-tutorial/)
-* visit `http://localhost:8000` for GraphQL playground
+* visit `http://localhost:7890` for GraphQL playground
 
 #### .env file
 

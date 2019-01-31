@@ -1,6 +1,7 @@
+import 'dotenv/config';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/graphql';
+const API_URL = `http://localhost:${process.env.PORT}/graphql`;
 
 export const signIn = async variables =>
   await axios.post(API_URL, {
@@ -30,10 +31,10 @@ export const me = async token =>
     },
     token
       ? {
-          headers: {
-            'x-token': token,
-          },
-        }
+        headers: {
+          'x-token': token,
+        },
+      }
       : null,
   );
 
@@ -101,10 +102,10 @@ export const updateUser = async (variables, token) =>
     },
     token
       ? {
-          headers: {
-            'x-token': token,
-          },
-        }
+        headers: {
+          'x-token': token,
+        },
+      }
       : null,
   );
 
@@ -121,38 +122,9 @@ export const deleteUser = async (variables, token) =>
     },
     token
       ? {
-          headers: {
-            'x-token': token,
-          },
-        }
+        headers: {
+          'x-token': token,
+        },
+      }
       : null,
   );
-
-export const messages = async () =>
-  axios.post(API_URL, {
-    query: `
-  query {
-    messages (limit: 2) {
-        edges {
-          text
-        }
-      }
-    }
-  `,
-  });
-
-export const messagesInclUsers = async () =>
-  axios.post(API_URL, {
-    query: `
-  query {
-    messages (limit: 2) {
-        edges {
-          text
-          user {
-            username
-          }
-        }
-      }
-    }
-  `,
-  });

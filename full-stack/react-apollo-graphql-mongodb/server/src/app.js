@@ -1,30 +1,33 @@
+// importing env file
 import 'dotenv/config';
-import cors from 'cors';
-import morgan from 'morgan';
-import http from 'http';
-import DataLoader from 'dataloader';
-import express from 'express';
-import {
-  ApolloServer,
-} from 'apollo-server-express';
 
+// express
+import express from 'express';
+const app = express();
+
+// cors limiter
+import cors from 'cors';
+app.use(cors());
+
+// logging
+import morgan from 'morgan';
+app.use(morgan('dev', { skip: () => process.env.NODE_ENV === 'development' }));
+
+// using the built client
+app.use(express.static('../client/dist'));
+
+// stuff for apollo server
 import {
   schema,
   resolvers,
   models,
   loaders,
 } from './resources';
-
-
-const app = express();
-
-app.use(cors());
-
-app.use(morgan('dev', { skip: () => process.env.NODE_ENV === 'development' }));
-
 import { getMe } from './resources/users/methods';
+import DataLoader from 'dataloader';
 
-
+// apollo server
+import { ApolloServer } from 'apollo-server-express';
 const server = new ApolloServer({
   introspection: true,
   typeDefs: schema,
@@ -66,8 +69,18 @@ const server = new ApolloServer({
   },
 });
 
-server.applyMiddleware({ app, path: '/graphql' });
+server.applyMiddleware({
+  app,
+  path: '/graphql',
+  bodyParserConfig: true,
+});
 
+// serving the front end
+import spa from './middleware/spa';
+app.use('*', spa('../client/dist/index.html'));
+
+// node.js HTTP interface
+import http from 'http';
 const httpServer = http.createServer(app);
 
 server.installSubscriptionHandlers(httpServer);

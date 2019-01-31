@@ -1,5 +1,5 @@
 {
-  "name": "fullstack-apollo-express-postgresql-boilerplate",
+  "name": "fullstack-apollo-express-mongodb-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,28 +7,27 @@
     "node": "10.11.0"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node src/index.js",
-    "test:run-server": "TEST_DATABASE_URL=mongodb://localhost:27017/new-graphql npm start",
-    "test:execute-test": "TEST_DATABASE_URL=mongodb://localhost:27017/new-graphql mocha --require @babel/register 'src/**/*.spec.js'",
-    "test": "echo \"No test specified\" && exit 0"
+    "jest": "jest --verbose --runInBand --forceExit",
+    "test": "npm run jest ",
+    "test:watch": "npm run jest -- --detectOpenHandles --runInBand --watch",
+    "build": "babel src -d dist -s true",
+    "start": "node dist/index.js",
+    "start:watch": "nodemon --exec babel-node src/index.js"
   },
-  "keywords": [],
-  "author": "Robin Wieruch <hello@rwieruch.com> (https://www.robinwieruch.de)",
-  "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.1.6",
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
-    "@babel/register": "^7.0.0",
-    "axios": "^0.18.0",
-    "chai": "^4.2.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.7",
-    "morgan": "^1.9.1"
+    "babel-jest": "^24.0.0",
+    "jest": "^24.0.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.7"
   },
   "dependencies": {
     "apollo-server": "^2.2.3",
     "apollo-server-express": "^2.2.3",
+    "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
     "bcrypt": "^3.0.2",
     "cors": "^2.8.5",
