@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { SignUpLink } from './SignUp';
-import * as routes from '../../routes';
+import { ROUTES } from '../../routes';
 import ErrorMessage from '../Error';
 
 const SIGN_IN = gql`
@@ -44,7 +44,7 @@ class SignInForm extends Component {
 
       await this.props.refetch();
 
-      this.props.history.push(routes.LANDING);
+      this.props.history.push(ROUTES.LANDING.linkTo());
     });
 
     event.preventDefault();

@@ -9,7 +9,7 @@ const defaultRoute = () => {
     .path;
 };
 
-const Switches = () => {
+const Switches = (refetch) => {
 
   return Object
     .values(ROUTES)
@@ -18,7 +18,7 @@ const Switches = () => {
         key={i}
         exact={route.linkTo.length === 0}
         path={route.path}
-        component={route.Component}
+        component={() => <route.Component refetch={refetch} />}
       />
     ))
     .concat(<Redirect key={'default'} to={defaultRoute()} />);

@@ -4,7 +4,7 @@ import { split } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { onError } from 'apollo-link-error';
-import { signOut } from '../views/lib/Session/SignOut';
+import { signOut } from '../views/lib/session/SignOut';
 
 import { client } from '../index';
 

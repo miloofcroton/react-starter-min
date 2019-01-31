@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import * as routes from '../../routes';
+import { ROUTES } from '../../routes';
 import ErrorMessage from '../Error';
 
 const SIGN_UP = gql`
@@ -44,7 +44,7 @@ class SignUpForm extends Component {
 
       await this.props.refetch();
 
-      this.props.history.push(routes.LANDING);
+      this.props.history.push(ROUTES.LANDING.linkTo());
     });
 
     event.preventDefault();
@@ -113,7 +113,7 @@ class SignUpForm extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
+    Don't have an account? <Link to={ROUTES.SIGN_UP.linkTo()}>Sign Up</Link>
   </p>
 );
 

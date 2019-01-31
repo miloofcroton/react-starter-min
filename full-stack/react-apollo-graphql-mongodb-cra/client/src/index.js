@@ -6,7 +6,7 @@ import { ApolloClient } from 'apollo-client';
 import { link } from './data/apollo';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import App from './views/layout';
+import App from './views/app';
 
 const cache = new InMemoryCache();
 

@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 
 import MessageDelete from './Delete';
 import Loading from '../../lib/Loading';
-import withSession from '../../lib/Session/withSession';
+import withSession from '../../lib/session/withSession';
 
 const MESSAGE_CREATED = gql`
   subscription {
@@ -171,8 +171,8 @@ const MessageItemBase = ({ message, session }) => (
     {session &&
       session.me &&
       message.user.id === session.me.id && (
-        <MessageDelete message={message} />
-      )}
+      <MessageDelete message={message} />
+    )}
   </div>
 );
 

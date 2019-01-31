@@ -1,5 +1,5 @@
 import React from 'react';
-import withSession from '../lib/Session/withSession';
+import withSession from '../lib/session/withSession';
 import { MessageCreate, Messages } from './Message';
 
 const Landing = ({ session }) => (

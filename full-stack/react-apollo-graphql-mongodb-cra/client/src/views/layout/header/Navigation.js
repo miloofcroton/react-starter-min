@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import * as routes from '../routes';
-import SignOutButton from './Session/SignOut';
+import { ROUTES } from '../../routes';
+import SignOutButton from '../../lib/session/SignOut';
 
 const Navigation = ({ session }) => (
   <div>
@@ -17,18 +17,18 @@ const Navigation = ({ session }) => (
 const NavigationAuth = ({ session }) => (
   <ul>
     <li>
-      <Link to={routes.LANDING}>Landing</Link>
+      <Link to={ROUTES.LANDING.linkTo()}>Landing</Link>
     </li>
     <li>
-      <Link to={routes.ACCOUNT}>Account ({session.me.username})</Link>
+      <Link to={ROUTES.ACCOUNT.linkTo()}>Account ({session.me.username})</Link>
     </li>
     {session &&
       session.me &&
       session.me.role === 'ADMIN' && (
-        <li>
-          <Link to={routes.ADMIN}>Admin</Link>
-        </li>
-      )}
+      <li>
+        <Link to={ROUTES.ADMIN.linkTo()}>Admin</Link>
+      </li>
+    )}
     <li>
       <SignOutButton />
     </li>
@@ -38,10 +38,10 @@ const NavigationAuth = ({ session }) => (
 const NavigationNonAuth = () => (
   <ul>
     <li>
-      <Link to={routes.SIGN_IN}>Sign In</Link>
+      <Link to={ROUTES.SIGN_IN.linkTo()}>Sign In</Link>
     </li>
     <li>
-      <Link to={routes.LANDING}>Landing</Link>
+      <Link to={ROUTES.LANDING.linkTo()}>Landing</Link>
     </li>
   </ul>
 );
