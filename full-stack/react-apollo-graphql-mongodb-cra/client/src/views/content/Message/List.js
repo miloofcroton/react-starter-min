@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import MessageDelete from './MessageDelete';
+import MessageDelete from './Delete';
 import Loading from '../../lib/Loading';
 import withSession from '../../lib/Session/withSession';
 

@@ -1,4 +1,7 @@
-import MessageCreate from './MessageCreate';
-import Messages from './Messages';
+import Create from './Create';
+import List from './List';
 
-export { MessageCreate, Messages };
+export {
+  Create as MessageCreate,
+  List as Messages,
+};

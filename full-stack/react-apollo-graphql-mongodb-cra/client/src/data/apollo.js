@@ -4,9 +4,9 @@ import { split } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { onError } from 'apollo-link-error';
-import { signOut } from '../../../views/lib/Session/SignOut';
+import { signOut } from '../views/lib/Session/SignOut';
 
-import { client } from '../../../index';
+import { client } from '../index';
 
 const httpLink = new HttpLink({
   uri: 'http://localhost:7890/graphql',
