@@ -4,9 +4,9 @@ import { split } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { onError } from 'apollo-link-error';
-import { signOut } from '../views/lib/Session/SignOut';
+import { signOut } from '../../../views/lib/Session/SignOut';
 
-import { client } from '../index';
+import { client } from '../../../index';
 
 const httpLink = new HttpLink({
   uri: 'http://localhost:7890/graphql',
@@ -19,7 +19,7 @@ const wsLink = new WebSocketLink({
   },
 });
 
-export const terminatingLink = split(
+const terminatingLink = split(
   ({ query }) => {
     const { kind, operation } = getMainDefinition(query);
     return (
@@ -30,7 +30,7 @@ export const terminatingLink = split(
   httpLink,
 );
 
-export const authLink = new ApolloLink((operation, forward) => {
+const authLink = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => {
     const token = localStorage.getItem('token');
 
@@ -44,7 +44,7 @@ export const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-export const errorLink = onError(({ graphQLErrors, networkError }) => {
+const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.forEach(({ message, locations, path }) => {
       console.log('GraphQL error', message);
@@ -63,3 +63,5 @@ export const errorLink = onError(({ graphQLErrors, networkError }) => {
     }
   }
 });
+
+export const link = ApolloLink.from([authLink, errorLink, terminatingLink]);
