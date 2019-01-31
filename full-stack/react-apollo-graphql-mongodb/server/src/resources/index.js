@@ -2,6 +2,7 @@
 import { GraphQLDateTime } from 'graphql-iso-date';
 import userResolvers from './users/resolvers';
 import messageResolvers from './messages/resolvers';
+import itemResolvers from './items/resolvers';
 
 const customScalarResolver = {
   Date: GraphQLDateTime,
@@ -11,16 +12,19 @@ export const resolvers = [
   customScalarResolver,
   userResolvers,
   messageResolvers,
+  itemResolvers,
 ];
 
 
 // MODELS
 import UserModel from './users/model';
 import MessageModel from './messages/model';
+import ItemModel from './items/model';
 
 export const models = {
   User: UserModel,
   Message: MessageModel,
+  Item: ItemModel,
 };
 
 
@@ -33,14 +37,16 @@ export const loaders = {
 
 
 // SCHEMAS
+import linkSchema from './links/schema';
 import userSchema from './users/schema';
 import messageSchema from './messages/schema';
-import linkSchema from './links/schema';
+import itemSchema from './items/schema';
 
 export const schema = [
   linkSchema,
   userSchema,
   messageSchema,
+  itemSchema,
 ];
 
 
